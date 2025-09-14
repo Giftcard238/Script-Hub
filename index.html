@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Egg Farm Sim Script</title>
+  <title>Roblox Scripts Hub</title>
   <style>
     body {
       background-color: #111;
@@ -33,6 +33,15 @@
       margin-bottom: 20px;
     }
 
+    select {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
     .code-box {
       background: #2a2a2a;
       color: #00ff88;
@@ -53,6 +62,7 @@
       border-radius: 6px;
       cursor: pointer;
       transition: 0.2s;
+      margin: 5px;
     }
 
     button:hover {
@@ -62,19 +72,64 @@
 </head>
 <body>
   <div class="container">
-    <h1>🥚 Egg Farm Sim Script 🐔</h1>
+    <h1>🎮 Roblox Scripts Hub 🛠️</h1>
+    
+    <select id="scriptSelector" onchange="updateScript()">
+      <option value="eggFarm">🥚 Egg Farm Sim</option>
+      <option value="mm2">🩸 MM2 Script</option>
+      <option value="nights99">🌲 99 Nights in the Forest</option>
+    </select>
+
     <div class="code-box" id="codeBox">
       loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
     </div>
+
     <button onclick="copyCode()">📋 Copy Script</button>
+    <button onclick="downloadCode()">⬇️ Download Script</button>
   </div>
 
   <script>
+    const scripts = {
+      eggFarm: {
+        title: "Egg Farm Sim",
+        code: 'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()',
+        filename: "EggFarmSimScript.txt"
+      },
+      mm2: {
+        title: "MM2 Script",
+        code: 'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()',
+        filename: "MM2Script.txt"
+      },
+      nights99: {
+        title: "99 Nights in the Forest",
+        code: 'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()',
+        filename: "99NightsInTheForestScript.txt"
+      }
+    };
+
+    function updateScript() {
+      const selector = document.getElementById("scriptSelector");
+      const selected = selector.value;
+      document.getElementById("codeBox").innerText = scripts[selected].code;
+      document.querySelector("h1").innerText = `🎮 ${scripts[selected].title} 🛠️`;
+    }
+
     function copyCode() {
       const code = document.getElementById("codeBox").innerText;
       navigator.clipboard.writeText(code).then(() => {
         alert("✅ Script copied to clipboard!");
       });
+    }
+
+    function downloadCode() {
+      const selector = document.getElementById("scriptSelector");
+      const selected = selector.value;
+      const code = scripts[selected].code;
+      const blob = new Blob([code], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = scripts[selected].filename;
+      link.click();
     }
   </script>
 </body>
