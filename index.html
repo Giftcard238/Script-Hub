@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egg Farm Sim Script</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #1c1c1c;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    .code-box {
+      background: #2a2a2a;
+      color: #00ff88;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: left;
+      font-family: monospace;
+      margin-bottom: 15px;
+      overflow-x: auto;
+    }
+
+    button {
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #ffaa00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🥚 Egg Farm Sim Script 🐔</h1>
+    <div class="code-box" id="codeBox">
+      loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
+    </div>
+    <button onclick="copyCode()">📋 Copy Script</button>
+  </div>
+
+  <script>
+    function copyCode() {
+      const code = document.getElementById("codeBox").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("✅ Script copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>
