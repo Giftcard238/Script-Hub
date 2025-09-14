@@ -1,81 +1,297 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Egg Farm Sim Script</title>
-  <style>
-    body {
-      background-color: #111;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .container {
-      background: #1c1c1c;
-      border-radius: 10px;
-      padding: 20px;
-      width: 90%;
-      max-width: 600px;
-      text-align: center;
-      box-shadow: 0px 0px 15px rgba(0,0,0,0.6);
-    }
-
-    h1 {
-      color: #ffcc00;
-      margin-bottom: 20px;
-    }
-
-    .code-box {
-      background: #2a2a2a;
-      color: #00ff88;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: left;
-      font-family: monospace;
-      margin-bottom: 15px;
-      overflow-x: auto;
-    }
-
-    button {
-      background: #ffcc00;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #ffaa00;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Script Listing — Egg Farm Simulator</title>
+<style>
+  :root{
+    --bg:#0b1020;
+    --card:#0f1724;
+    --muted:#98a0b3;
+    --accent:#6c5ce7;
+    --gold:#ffcc00;
+    --panel:#0d1420;
+    --glass: rgba(255,255,255,0.02);
+    --green:#00ff88;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#05060a);color:#e6eef8}
+  .wrap{max-width:1100px;margin:32px auto;padding:18px}
+  .grid{display:grid;grid-template-columns: 420px 1fr;gap:20px;align-items:start}
+  /* card */
+  .card{background:linear-gradient(180deg,var(--card),#0c1220);border-radius:12px;padding:0;overflow:hidden;box-shadow:0 6px 30px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)}
+  .thumb{height:220px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:10px}
+  .meta-badges{display:flex;gap:8px}
+  .badge{background:rgba(0,0,0,0.45);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);backdrop-filter:blur(4px)}
+  .card-body{display:flex;gap:14px;padding:14px}
+  .title-col{flex:1}
+  .title{font-size:20px;margin:0;color:#fff}
+  .sub{font-size:13px;color:var(--muted);margin-top:6px}
+  .actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+  .small{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+  /* right panel */
+  .panel{background:var(--panel);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);min-height:520px}
+  .banner{display:flex;gap:16px}
+  .banner .thumb-lg{width:320px;height:180px;border-radius:10px;background-size:cover;background-position:center;box-shadow:0 6px 30px rgba(0,0,0,0.5)}
+  .info{flex:1}
+  .info h2{margin:0;font-size:24px}
+  .info .meta{display:flex;gap:12px;align-items:center;margin-top:8px;color:var(--muted)}
+  .pill{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;color:var(--muted);font-size:13px}
+  .editor{margin-top:18px;background:#061022;border-radius:10px;padding:12px;border:1px solid rgba(255,255,255,0.03)}
+  .editor .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
+  .editor .code{background:#031021;color:var(--green);padding:14px;border-radius:8px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; font-size:13px; white-space:pre; overflow:auto; max-height:260px}
+  .icons{display:flex;gap:8px}
+  .copy-btn{background:linear-gradient(90deg,var(--gold),#f0b000);border:none;padding:8px 12px;border-radius:8px;color:#000;font-weight:700;cursor:pointer}
+  .dl-btn{background:transparent;border:1px solid rgba(255,255,255,0.05);padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(2,6,15,0.7);display:none;align-items:center;justify-content:center;z-index:1000}
+  .modal{width:900px;max-width:95%;background:#071027;border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.04)}
+  .modal .top{display:flex;gap:12px;align-items:center}
+  .modal .thumb{width:220px;height:120px;border-radius:8px;background-size:cover;background-position:center}
+  .modal .details{flex:1}
+  .modal .close{background:transparent;border:0;color:var(--muted);cursor:pointer}
+  .row{display:flex;gap:12px;align-items:center;margin-top:10px}
+  .label{font-size:13px;color:var(--muted)}
+  .counter{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:999px;font-size:13px;color:var(--muted)}
+  /* responsive */
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr;gap:12px}
+    .banner{flex-direction:column}
+    .banner .thumb-lg{width:100%;height:160px}
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>🥚 Egg Farm Sim Script 🐔</h1>
-    <div class="code-box" id="codeBox">
-      loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="card" id="cardClick">
+          <div class="thumb" style="background-image:url('https://i.imgur.com/1i8m9qQ.jpg')">
+            <div style="flex:1"></div>
+            <div class="meta-badges">
+              <div class="badge">👁 26</div>
+              <div class="badge">6 minutes ago</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="title-col">
+              <h3 class="title">elected admin test</h3>
+              <div class="sub">Elected Admin · uploaded by sserg5001</div>
+              <div style="height:6px"></div>
+              <div class="small"><span class="pill">Free</span><span>• demo script listing</span></div>
+            </div>
+            <div class="actions">
+              <button class="btn" id="openBtn">Open</button>
+              <button class="btn secondary" onclick="alert('Direct Execute is fake in this mock')">Direct Execute</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <!-- small listing row -->
+        <div class="card" style="padding:12px">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:80px;height:56px;border-radius:6px;background-image:url('https://i.imgur.com/1i8m9qQ.jpg');background-size:cover"></div>
+            <div style="flex:1">
+              <div style="font-weight:700">elected admin test</div>
+              <div style="color:var(--muted);font-size:13px">Elected Admin • 7 minutes ago</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <button class="btn" style="padding:6px 10px" id="openBtn2">View</button>
+              <div style="text-align:right;color:var(--muted);font-size:12px">31 views</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="panel">
+          <div class="banner">
+            <div class="thumb-lg" style="background-image:url('https://i.imgur.com/1i8m9qQ.jpg')"></div>
+            <div class="info">
+              <h2>elected admin test</h2>
+              <div class="meta">
+                <div class="pill">Elected Admin</div>
+                <div style="color:var(--muted)">uploaded by <strong style="color:#fff">sserg5001</strong></div>
+                <div style="flex:1"></div>
+                <div class="pill">Free</div>
+              </div>
+              <div class="row">
+                <button class="copy-btn" id="copyTop">Copy Script</button>
+                <button class="dl-btn" id="downloadTop">Download</button>
+                <div style="flex:1"></div>
+                <div class="label">Please login to perform actions</div>
+              </div>
+
+              <div class="editor" aria-hidden="false">
+                <div class="toolbar">
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <div class="label">Edited By: sserg5001</div>
+                    <div class="counter">Copy Script</div>
+                  </div>
+                  <div class="icons">
+                    <button class="dl-btn" id="copyTopInline">Copy</button>
+                    <button class="dl-btn" id="downloadTopInline">Download</button>
+                  </div>
+                </div>
+
+                <div class="code" id="codeArea">loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()</div>
+                <div class="note">This is a demo viewer. The "Direct Execute" / "Run" action is not functional in this mock site.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <button onclick="copyCode()">📋 Copy Script</button>
   </div>
 
-  <script>
-    function copyCode() {
-      const code = document.getElementById("codeBox").innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        alert("✅ Script copied to clipboard!");
-      });
-    }
-  </script>
+  <!-- modal / expanded view -->
+  <div class="overlay" id="overlay">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="thumb" style="background-image:url('https://i.imgur.com/1i8m9qQ.jpg');width:140px;height:80px;border-radius:6px"></div>
+          <div>
+            <div style="font-size:20px;font-weight:700">🥚 Egg Farm Simulator</div>
+            <div style="color:var(--muted);margin-top:6px">Uploaded by <strong>sserg5001</strong> · 6 minutes ago</div>
+          </div>
+        </div>
+        <div>
+          <button class="close" id="closeModal">Close ✕</button>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div style="display:flex;gap:12px">
+        <div style="flex:1">
+          <div style="background:#051028;border-radius:8px;padding:12px;border:1px solid rgba(255,255,255,0.03)">
+            <div style="font-weight:700;margin-bottom:6px">Script Preview</div>
+            <pre id="modalCode" style="white-space:pre-wrap;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;background:transparent;color:var(--green);margin:0;overflow:auto;max-height:240px">loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()</pre>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:8px">
+            <button class="copy-btn" id="modalCopy">Copy</button>
+            <button class="dl-btn" id="modalDownload">Download</button>
+            <button class="dl-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied'))">Copy Link</button>
+          </div>
+        </div>
+
+        <div style="width:260px">
+          <div style="background:var(--glass);padding:12px;border-radius:8px">
+            <div style="font-weight:700">Details</div>
+            <div style="color:var(--muted);margin-top:8px">Category: Script · Type: Demo</div>
+            <div style="margin-top:8px;color:var(--muted)"><strong>Views:</strong> 31</div>
+            <div style="margin-top:8px;color:var(--muted)"><strong>Price:</strong> Free</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  // script text used in multiple places
+  const scriptText = 'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()';
+
+  // open modal handlers
+  const overlay = document.getElementById('overlay');
+  const openBtn = document.getElementById('openBtn');
+  const openBtn2 = document.getElementById('openBtn2');
+  const cardClick = document.getElementById('cardClick');
+  const closeModal = document.getElementById('closeModal');
+
+  function openModal(){
+    overlay.style.display = 'flex';
+    // put script text into modal code (safety: encode & show)
+    document.getElementById('modalCode').innerText = scriptText;
+  }
+  function closeModalFn(){
+    overlay.style.display = 'none';
+  }
+  openBtn.addEventListener('click', openModal);
+  openBtn2.addEventListener('click', openModal);
+  cardClick.addEventListener('dblclick', openModal);
+  closeModal.addEventListener('click', closeModalFn);
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModalFn();
+  });
+
+  // copy / download utilities
+  function tryCopy(text){
+    navigator.clipboard.writeText(text).then(()=> {
+      flash('Copied to clipboard');
+    }).catch(()=> {
+      alert('Copy failed. Select and copy manually.');
+    });
+  }
+
+  function downloadText(filename, text){
+    const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename || 'script.txt';
+    document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  }
+
+  function flash(msg){
+    // small transient toast
+    const t = document.createElement('div');
+    t.innerText = msg;
+    t.style.position = 'fixed';
+    t.style.bottom = '24px';
+    t.style.left = '50%';
+    t.style.transform = 'translateX(-50%)';
+    t.style.background = 'linear-gradient(90deg,#111,#1a1a1a)';
+    t.style.color = '#fff';
+    t.style.padding = '8px 14px';
+    t.style.borderRadius = '999px';
+    t.style.boxShadow = '0 6px 30px rgba(0,0,0,0.6)';
+    t.style.zIndex = 2000;
+    document.body.appendChild(t);
+    setTimeout(()=> {
+      t.style.transition = 'opacity 250ms';
+      t.style.opacity = '0';
+      setTimeout(()=>t.remove(),260);
+    },900);
+  }
+
+  // top page buttons
+  document.getElementById('copyTop').addEventListener('click', ()=> tryCopy(scriptText));
+  document.getElementById('copyTopInline').addEventListener('click', ()=> tryCopy(scriptText));
+  document.getElementById('copyTopInline').addEventListener('keypress', ()=> tryCopy(scriptText));
+  document.getElementById('downloadTop').addEventListener('click', ()=> downloadText('egg-farm-sim.lua', scriptText));
+  document.getElementById('downloadTopInline').addEventListener('click', ()=> downloadText('egg-farm-sim.lua', scriptText));
+  document.getElementById('copyTopInline').addEventListener('click', ()=> tryCopy(scriptText));
+
+  // panel copy + modal copy
+  document.getElementById('copyTop').addEventListener('click', ()=> tryCopy(scriptText));
+  document.getElementById('modalCopy').addEventListener('click', ()=> tryCopy(scriptText));
+  document.getElementById('modalDownload').addEventListener('click', ()=> downloadText('egg-farm-sim.lua', scriptText));
+
+  // small convenience for top code area click to select all
+  const codeArea = document.getElementById('codeArea');
+  codeArea.addEventListener('click', ()=> {
+    const range = document.createRange();
+    range.selectNodeContents(codeArea);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+
+  // set displayed code text on page
+  codeArea.innerText = scriptText;
+  document.getElementById('codeBox')?.innerText && (document.getElementById('codeBox').innerText = scriptText);
+
+  // accessible keyboard: open modal when Enter on Open button
+  openBtn.addEventListener('keydown', (e)=> { if(e.key === 'Enter') openModal();});
+  openBtn2.addEventListener('keydown', (e)=> { if(e.key === 'Enter') openModal();});
+</script>
 </body>
 </html>
