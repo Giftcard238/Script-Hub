@@ -14,7 +14,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       position: relative;
     }
 
@@ -27,6 +27,7 @@
       text-align: center;
       box-shadow: 0px 0px 15px rgba(0,0,0,0.6);
       z-index: 1;
+      position: relative;
     }
 
     h1 {
@@ -80,13 +81,19 @@
       color: #ffcc00;
       font-weight: bold;
       border-radius: 6px;
-      z-index: 2;
+      z-index: 9999; /* HIGH to always be on top */
       white-space: nowrap;
       text-align: center;
     }
 
-    .ad-left { left: 10px; }
-    .ad-right { right: 10px; }
+    .ad-left { left: 0; }
+    .ad-right { right: 0; }
+
+    /* Responsive for mobile so ads don’t break layout */
+    @media (max-width: 700px) {
+      .ad-left, .ad-right { display: none; }
+      .container { width: 95%; }
+    }
   </style>
 </head>
 <body>
