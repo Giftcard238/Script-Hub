@@ -53,6 +53,7 @@
       font-family: monospace;
       margin-bottom: 15px;
       overflow-x: auto;
+      white-space: pre-wrap;
     }
 
     button {
@@ -89,9 +90,8 @@
     .ad-left { left: 10px; }
     .ad-right { right: 10px; }
 
-    /* Responsive for mobile */
+    /* Keep ads visible on mobile */
     @media (max-width: 700px) {
-      .ad-left, .ad-right { display: none; }
       .container { width: 95%; }
     }
   </style>
