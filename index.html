@@ -71,7 +71,7 @@
       background: #ffaa00;
     }
 
-    /* Left & Right Ads */
+    /* Left & Right ads as plain visible text */
     .ad-left, .ad-right {
       position: fixed;
       top: 50%;
@@ -81,15 +81,15 @@
       color: #ffcc00;
       font-weight: bold;
       border-radius: 6px;
-      z-index: 9999; /* HIGH to always be on top */
-      white-space: nowrap;
+      z-index: 9999;
       text-align: center;
+      white-space: nowrap;
     }
 
-    .ad-left { left: 0; }
-    .ad-right { right: 0; }
+    .ad-left { left: 10px; }
+    .ad-right { right: 10px; }
 
-    /* Responsive for mobile so ads don’t break layout */
+    /* Responsive for mobile */
     @media (max-width: 700px) {
       .ad-left, .ad-right { display: none; }
       .container { width: 95%; }
