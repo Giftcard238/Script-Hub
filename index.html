@@ -72,40 +72,20 @@
       background: #ffaa00;
     }
 
-    /* Left & Right ads as plain visible text */
-    .ad-left, .ad-right {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.1);
-      padding: 10px;
-      color: #ffcc00;
-      font-weight: bold;
-      border-radius: 6px;
-      z-index: 9999;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .ad-left { left: 10px; }
-    .ad-right { right: 10px; }
-
-    /* Keep ads visible on mobile */
+    /* Keep container responsive */
     @media (max-width: 700px) {
       .container { width: 95%; }
-      .ad-left, .ad-right {
-        position: relative;
-        top: auto;
-        transform: none;
-        margin: 10px auto;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Ads -->
-  <div class="ad-left">Put your ad here — email: mtndewscripts.org@gmail.com</div>
-  <div class="ad-right">Put your ad here — email: mtndewscripts.org@gmail.com</div>
+  <!-- Left & Right Ads (inline styles with !important to prevent GitHub from hiding them) -->
+  <div class="ad-left" style="position: fixed !important; top: 50% !important; left: 10px !important; transform: translateY(-50%) !important; background: rgba(255,255,255,0.1) !important; padding: 10px !important; color: #ffcc00 !important; font-weight: bold !important; border-radius: 6px !important; z-index: 9999 !important; text-align: center !important; white-space: nowrap !important; display: block !important;">
+    Put your ad here — email: mtndewscripts.org@gmail.com
+  </div>
+  <div class="ad-right" style="position: fixed !important; top: 50% !important; right: 10px !important; transform: translateY(-50%) !important; background: rgba(255,255,255,0.1) !important; padding: 10px !important; color: #ffcc00 !important; font-weight: bold !important; border-radius: 6px !important; z-index: 9999 !important; text-align: center !important; white-space: nowrap !important; display: block !important;">
+    Put your ad here — email: mtndewscripts.org@gmail.com
+  </div>
 
   <!-- Main container -->
   <div class="container">
