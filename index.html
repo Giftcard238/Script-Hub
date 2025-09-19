@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox Scripts Hub</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .container {
+      background: #1c1c1c;
+      border-radius: 10px;
+      padding: 20px;
+      width: 600px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.6);
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .code-box {
+      background: #2a2a2a;
+      color: #00ff88;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: left;
+      font-family: monospace;
+      margin-bottom: 15px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    button {
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+      margin: 5px;
+    }
+
+    button:hover {
+      background: #ffaa00;
+    }
+
+    /* Left & Right ads as plain visible text */
+    .ad-left, .ad-right {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      color: #ffcc00;
+      font-weight: bold;
+      border-radius: 6px;
+      z-index: 9999;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .ad-left { left: 10px; }
+    .ad-right { right: 10px; }
+
+    /* Keep ads visible on mobile */
+    @media (max-width: 700px) {
+      .container { width: 95%; }
+      .ad-left, .ad-right {
+        position: relative;
+        top: auto;
+        transform: none;
+        margin: 10px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ads -->
+  <div class="ad-left">Put your ad here — email: mtndewscripts.org@gmail.com</div>
+  <div class="ad-right">Put your ad here — email: mtndewscripts.org@gmail.com</div>
+
+  <!-- Main container -->
+  <div class="container">
+    <h1>🎮 Roblox Scripts Hub 🛠️</h1>
+    
+    <select id="scriptSelector" onchange="updateScript()">
+      <option value="eggFarm">🥚 Egg Farm Sim</option>
+      <option value="mm2">🩸 MM2 Script</option>
+      <option value="nights99">🌲 99 Nights in the Forest</option>
+    </select>
+
+    <div class="code-box" id="codeBox">
+      loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
+    </div>
+
+    <button onclick="copyCode()">📋 Copy Script</button>
+    <button onclick="downloadCode()">⬇️ Download Script</button>
+  </div>
+
+  <script>
+    const scripts = {
+      eggFarm: {
+        title: "Egg Farm Sim",
+        code: 'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()',
+        filename: "EggFarmSimScript.txt"
+      },
+      mm2: {
+        title: "MM2 Script",
+        code: 'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()',
+        filename: "MM2Script.txt"
+      },
+      nights99: {
+        title: "99 Nights in the Forest",
+        code: 'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()',
+        filename: "99NightsInTheForestScript.txt"
+      }
+    };
+
+    function updateScript() {
+      const selector = document.getElementById("scriptSelector");
+      const selected = selector.value;
+      document.getElementById("codeBox").innerText = scripts[selected].code;
+      document.querySelector("h1").innerText = `🎮 ${scripts[selected].title} 🛠️`;
+    }
+
+    function copyCode() {
+      const code = document.getElementById("codeBox").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("✅ Script copied to clipboard!");
+      });
+    }
+
+    function downloadCode() {
+      const selector = document.getElementById("scriptSelector");
+      const selected = selector.value;
+      const code = scripts[selected].code;
+      const blob = new Blob([code], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = scripts[selected].filename;
+      link.click();
+    }
+  </script>
+</body>
+</html>
