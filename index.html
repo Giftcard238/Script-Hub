@@ -17,7 +17,6 @@
       min-height: 100vh;
       position: relative;
     }
-
     .container {
       background: #1c1c1c;
       border-radius: 10px;
@@ -29,12 +28,10 @@
       z-index: 1;
       position: relative;
     }
-
     h1 {
       color: #ffcc00;
       margin-bottom: 20px;
     }
-
     select {
       padding: 10px;
       border-radius: 6px;
@@ -43,7 +40,6 @@
       font-weight: bold;
       cursor: pointer;
     }
-
     .code-box {
       background: #2a2a2a;
       color: #00ff88;
@@ -55,7 +51,6 @@
       overflow-x: auto;
       white-space: pre-wrap;
     }
-
     button {
       background: #ffcc00;
       color: #000;
@@ -67,45 +62,36 @@
       transition: 0.2s;
       margin: 5px;
     }
-
     button:hover {
       background: #ffaa00;
     }
-
-    /* Keep container responsive */
     @media (max-width: 700px) {
       .container { width: 95%; }
     }
   </style>
 </head>
 <body>
-  <!-- Left & Right Ads -->
-  <div class="ad-left" style="position: fixed !important; top: 50% !important; left: 10px !important; transform: translateY(-50%) !important; background: rgba(255,255,255,0.1) !important; padding: 10px !important; color: #ffcc00 !important; font-weight: bold !important; border-radius: 6px !important; z-index: 9999 !important; text-align: center !important; white-space: nowrap !important; display: block !important;">
-    Put your ad here — email: mtndewscripts.org@gmail.com
+  <div style="position: fixed; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.1); padding: 10px; color: #ffcc00; font-weight: bold; border-radius: 6px; z-index: 9999; text-align: center; white-space: nowrap;">
+    Put your text here — email: mtndewscripts.org@gmail.com
   </div>
-  <div class="ad-right" style="position: fixed !important; top: 50% !important; right: 10px !important; transform: translateY(-50%) !important; background: rgba(255,255,255,0.1) !important; padding: 10px !important; color: #ffcc00 !important; font-weight: bold !important; border-radius: 6px !important; z-index: 9999 !important; text-align: center !important; white-space: nowrap !important; display: block !important;">
-    Put your ad here — email: mtndewscripts.org@gmail.com
+  <div style="position: fixed; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.1); padding: 10px; color: #ffcc00; font-weight: bold; border-radius: 6px; z-index: 9999; text-align: center; white-space: nowrap;">
+    Put your text here — email: mtndewscripts.org@gmail.com
   </div>
-
-  <!-- Main container -->
   <div class="container">
     <h1>🎮 Roblox Scripts Hub 🛠️</h1>
-    
     <select id="scriptSelector" onchange="updateScript()">
       <option value="eggFarm">🥚 Egg Farm Sim</option>
       <option value="mm2">🩸 MM2 Script</option>
       <option value="nights99">🌲 99 Nights in the Forest</option>
       <option value="buildCar">🚗 Build a Car</option>
+      <option value="oneBlock">🟩 One Block</option>
     </select>
-
     <div class="code-box" id="codeBox">
       loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
     </div>
-
     <button onclick="copyCode()">📋 Copy Script</button>
     <button onclick="downloadCode()">⬇️ Download Script</button>
   </div>
-
   <script>
     const scripts = {
       eggFarm: {
@@ -127,23 +113,25 @@
         title: "Build a Car Needs Key | https://discord.gg/xvUeX64BWa",
         code: 'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()',
         filename: "BuildACarNeedsKey.txt"
+      },
+      oneBlock: {
+        title: "One Block",
+        code: 'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()',
+        filename: "OneBlockScript.txt"
       }
     };
-
     function updateScript() {
       const selector = document.getElementById("scriptSelector");
       const selected = selector.value;
       document.getElementById("codeBox").innerText = scripts[selected].code;
       document.querySelector("h1").innerText = `🎮 ${scripts[selected].title} 🛠️`;
     }
-
     function copyCode() {
       const code = document.getElementById("codeBox").innerText;
       navigator.clipboard.writeText(code).then(() => {
         alert("✅ Script copied to clipboard!");
       });
     }
-
     function downloadCode() {
       const selector = document.getElementById("scriptSelector");
       const selected = selector.value;
@@ -157,4 +145,3 @@
   </script>
 </body>
 </html>
-
