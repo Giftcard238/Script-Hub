@@ -5,23 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Roblox Scripts Hub</title>
 <style>
-body { background-color: #111; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; position: relative; }
-.container { background: #1c1c1c; border-radius: 10px; padding: 20px; width: 600px; max-width: 90%; text-align: center; box-shadow: 0px 0px 15px rgba(0,0,0,0.6); z-index: 1; position: relative; }
+body { background-color: #111; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 20px; text-align: center; }
+.container { background: #1c1c1c; border-radius: 10px; padding: 20px; width: 600px; max-width: 90%; margin: 40px auto; box-shadow: 0px 0px 15px rgba(0,0,0,0.6); }
 h1 { color: #ffcc00; margin-bottom: 20px; }
 select { padding: 10px; border-radius: 6px; border: none; margin-bottom: 15px; font-weight: bold; cursor: pointer; }
 .code-box { background: #2a2a2a; color: #00ff88; padding: 15px; border-radius: 8px; text-align: left; font-family: monospace; margin-bottom: 15px; overflow-x: auto; white-space: pre-wrap; }
 button { background: #ffcc00; color: #000; font-weight: bold; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; transition: 0.2s; margin: 5px; }
 button:hover { background: #ffaa00; }
-@media (max-width: 700px) { .container { width: 95%; } }
-.ad-box { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); padding: 10px; color: #ffcc00; font-weight: bold; border-radius: 6px; z-index: 9999; text-align: center; white-space: nowrap; }
-.left { left: 10px; }
-.right { right: 10px; }
+#switchText { margin-top: 15px; font-weight: bold; }
 </style>
 </head>
 <body>
-
-<div id="ad-left" class="ad-box left"></div>
-<div id="ad-right" class="ad-box right"></div>
 
 <div class="container">
 <h1>🎮 Roblox Scripts Hub 🛠️</h1>
@@ -38,6 +32,7 @@ loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
 </div>
 <button onclick="copyCode()">📋 Copy Script</button>
 <button onclick="downloadCode()">⬇️ Download Script</button>
+<p id="switchText"></p>
 </div>
 
 <script>
@@ -73,20 +68,18 @@ function downloadCode() {
   link.click();
 }
 
-const adLeft = document.getElementById("ad-left");
-const adRight = document.getElementById("ad-right");
-const adMessages = [
-  `<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; font-weight: bold; text-decoration: none;">Go to the owner Discord! https://discord.gg/xvUeX64BWa</a>`,
-  `Put your Ad here — email: <a href="mailto:mtndewscripts.org@gmail.com" style="color: orange; font-weight: bold; text-decoration: none;">mtndewscripts.org@gmail.com</a>`
+const textBox = document.getElementById("switchText");
+const messages = [
+  `<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; text-decoration: none;">Go to the owner Discord! https://discord.gg/xvUeX64BWa</a>`,
+  `Put your spot here — email: <a href="mailto:mtndewscripts.org@gmail.com" style="color: orange; text-decoration: none;">mtndewscripts.org@gmail.com</a>`
 ];
-let adIndex = 0;
-function swapAds() {
-  adLeft.innerHTML = adMessages[adIndex];
-  adRight.innerHTML = adMessages[adIndex];
-  adIndex = (adIndex + 1) % adMessages.length;
+let index = 0;
+function switchMessage() {
+  textBox.innerHTML = messages[index];
+  index = (index + 1) % messages.length;
 }
-swapAds();
-setInterval(swapAds, 3000);
+switchMessage();
+setInterval(switchMessage, 3000);
 </script>
 
 </body>
