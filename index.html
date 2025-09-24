@@ -13,21 +13,18 @@ select { padding: 10px; border-radius: 6px; border: none; margin-bottom: 15px; f
 button { background: #ffcc00; color: #000; font-weight: bold; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; transition: 0.2s; margin: 5px; }
 button:hover { background: #ffaa00; }
 @media (max-width: 700px) { .container { width: 95%; } }
+.ad-box { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); padding: 10px; color: #ffcc00; font-weight: bold; border-radius: 6px; z-index: 9999; text-align: center; white-space: nowrap; }
+.left { left: 10px; }
+.right { right: 10px; }
 </style>
 </head>
 <body>
 
-<div style="position: fixed; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.1); padding: 10px; color: #ffcc00; font-weight: bold; border-radius: 6px; z-index: 9999; text-align: center; white-space: nowrap;">
-Put your Ad here — email: mtndewscripts.org@gmail.com
-</div>
-
-<div style="position: fixed; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,255,255,0.1); padding: 10px; color: #ffcc00; font-weight: bold; border-radius: 6px; z-index: 9999; text-align: center; white-space: nowrap;">
-Put your Ad here — email: mtndewscripts.org@gmail.com
-</div>
+<div id="ad-left" class="ad-box left"></div>
+<div id="ad-right" class="ad-box right"></div>
 
 <div class="container">
 <h1>🎮 Roblox Scripts Hub 🛠️</h1>
-
 <select id="scriptSelector" onchange="updateScript()">
   <option value="eggFarm">🥚 Egg Farm Sim</option>
   <option value="mm2">🩸 MM2 Script</option>
@@ -36,14 +33,11 @@ Put your Ad here — email: mtndewscripts.org@gmail.com
   <option value="oneBlock">🟩 One Block</option>
   <option value="legendsOfSpeed">🏎️ Legends Of Speed</option>
 </select>
-
 <div class="code-box" id="codeBox">
 loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
 </div>
-
 <button onclick="copyCode()">📋 Copy Script</button>
 <button onclick="downloadCode()">⬇️ Download Script</button>
-
 </div>
 
 <script>
@@ -78,8 +72,22 @@ function downloadCode() {
   link.download = scripts[selected].filename;
   link.click();
 }
+
+const adLeft = document.getElementById("ad-left");
+const adRight = document.getElementById("ad-right");
+const adMessages = [
+  `<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; font-weight: bold; text-decoration: none;">Go to the owner Discord! https://discord.gg/xvUeX64BWa</a>`,
+  `Put your Ad here — email: <a href="mailto:mtndewscripts.org@gmail.com" style="color: orange; font-weight: bold; text-decoration: none;">mtndewscripts.org@gmail.com</a>`
+];
+let adIndex = 0;
+function swapAds() {
+  adLeft.innerHTML = adMessages[adIndex];
+  adRight.innerHTML = adMessages[adIndex];
+  adIndex = (adIndex + 1) % adMessages.length;
+}
+swapAds();
+setInterval(swapAds, 3000);
 </script>
 
 </body>
 </html>
-
