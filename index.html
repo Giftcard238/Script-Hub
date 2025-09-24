@@ -13,10 +13,12 @@ select { padding: 10px; border-radius: 6px; border: none; margin-bottom: 15px; f
 button { background: #ffcc00; color: #000; font-weight: bold; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; transition: 0.2s; margin: 5px; }
 button:hover { background: #ffaa00; }
 #switchText { margin-top: 15px; font-weight: bold; }
+#fixedEmail { position: fixed; bottom: 10px; right: 10px; color: orange; font-weight: bold; }
+#fixedEmail a { color: orange; text-decoration: none; }
+#fixedEmail a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-
 <div class="container">
 <h1>🎮 Roblox Scripts Hub 🛠️</h1>
 <select id="scriptSelector" onchange="updateScript()">
@@ -34,7 +36,9 @@ loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
 <button onclick="downloadCode()">⬇️ Download Script</button>
 <p id="switchText"></p>
 </div>
-
+<div id="fixedEmail">
+  <a href="mailto:mtndewscripts.org@gmail.com">mtndewscripts.org@gmail.com</a>
+</div>
 <script>
 const scripts = {
   eggFarm: { title: "Egg Farm Sim", code: 'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()', filename: "EggFarmSimScript.txt" },
@@ -44,19 +48,16 @@ const scripts = {
   oneBlock: { title: "One Block", code: 'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()', filename: "OneBlockScript.txt" },
   legendsOfSpeed: { title: "Legends Of Speed", code: 'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()', filename: "LegendsOfSpeedScript.txt" }
 };
-
 function updateScript() {
   const selector = document.getElementById("scriptSelector");
   const selected = selector.value;
   document.getElementById("codeBox").innerText = scripts[selected].code;
   document.querySelector("h1").innerText = `🎮 ${scripts[selected].title} 🛠️`;
 }
-
 function copyCode() {
   const code = document.getElementById("codeBox").innerText;
   navigator.clipboard.writeText(code).then(() => { alert("✅ Script copied to clipboard!"); });
 }
-
 function downloadCode() {
   const selector = document.getElementById("scriptSelector");
   const selected = selector.value;
@@ -67,8 +68,6 @@ function downloadCode() {
   link.download = scripts[selected].filename;
   link.click();
 }
-
-// Rotating text
 const textBox = document.getElementById("switchText");
 const messages = [
   `<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; text-decoration: none;">Go to the owner Discord! https://discord.gg/xvUeX64BWa</a>`,
@@ -80,9 +79,7 @@ function switchMessage() {
   index = (index + 1) % messages.length;
 }
 switchMessage();
-setInterval(switchMessage, 8000); // 8 seconds
+setInterval(switchMessage, 8000);
 </script>
-
 </body>
 </html>
-
