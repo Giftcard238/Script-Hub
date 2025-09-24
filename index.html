@@ -68,6 +68,7 @@ function downloadCode() {
   link.click();
 }
 
+// Rotating text
 const textBox = document.getElementById("switchText");
 const messages = [
   `<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; text-decoration: none;">Go to the owner Discord! https://discord.gg/xvUeX64BWa</a>`,
@@ -79,7 +80,7 @@ function switchMessage() {
   index = (index + 1) % messages.length;
 }
 switchMessage();
-setInterval(switchMessage, 3000);
+setInterval(switchMessage, 8000); // 8 seconds
 </script>
 
 </body>
