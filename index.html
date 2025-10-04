@@ -41,6 +41,7 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
     <option value="eggFarm">🥚 Egg Farm Sim</option>
     <option value="mm2">🩸 MM2 Script</option>
     <option value="nights99">🌲 99 Nights in the Forest</option>
+    <option value="unbox99">📦 Unbox 99 Nights</option>
     <option value="buildCar">🚗 Build a Car</option>
     <option value="oneBlock">🟩 One Block</option>
     <option value="legendsOfSpeed">🏎️ Legends Of Speed</option>
@@ -60,11 +61,49 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
   <a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a>
 </div>
 <script>
-const scripts={eggFarm:{title:"Egg Farm Sim",code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()',filename:"EggFarmSimScript.txt"},mm2:{title:"MM2 Script",code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()',filename:"MM2Script.txt"},nights99:{title:"99 Nights in the Forest",code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()',filename:"99NightsInTheForestScript.txt"},buildCar:{title:"Build a Car",code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()',filename:"BuildACarNeedsKey.txt"},oneBlock:{title:"One Block",code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()',filename:"OneBlockScript.txt"},legendsOfSpeed:{title:"Legends Of Speed",code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()',filename:"LegendsOfSpeedScript.txt"},sizeLegends:{title:"Size Legends Simulator",code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()',filename:"SizeLegendsSimulator.txt"}};
-function updateScript(){const e=document.getElementById("scriptSelector").value;document.getElementById("codeBox").innerText=scripts[e].code;document.querySelector(".main h1").innerText=`🎮 ${scripts[e].title} 🛠️`}
-function copyCode(){navigator.clipboard.writeText(document.getElementById("codeBox").innerText).then(()=>alert("✅ Copied!"))}
-function downloadCode(){const e=document.getElementById("scriptSelector").value,c=scripts[e].code,t=new Blob([c],{type:"text/plain"}),l=document.createElement("a");l.href=URL.createObjectURL(t),l.download=scripts[e].filename,l.click()}
-const textBox=document.getElementById("switchText"),messages=['<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; text-decoration: none;">Owner Discord</a>','Contact: <a href="mailto:robloxscripts045@gmail.com" style="color: var(--accent); text-decoration: none;">robloxscripts045@gmail.com</a>'];let index=0;function switchMessage(){textBox.innerHTML=messages[index],index=(index+1)%messages.length}switchMessage(),setInterval(switchMessage,8000);
+const scripts = {
+    eggFarm: { title:"Egg Farm Sim", code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()', filename:"EggFarmSimScript.txt" },
+    mm2: { title:"MM2 Script", code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()', filename:"MM2Script.txt" },
+    nights99: { title:"99 Nights in the Forest", code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()', filename:"99NightsInTheForestScript.txt" },
+    unbox99: { title:"Unbox 99 Nights", code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()', filename:"Unbox99NightsScript.txt" },
+    buildCar: { title:"Build a Car", code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()', filename:"BuildACarNeedsKey.txt" },
+    oneBlock: { title:"One Block", code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()', filename:"OneBlockScript.txt" },
+    legendsOfSpeed: { title:"Legends Of Speed", code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()', filename:"LegendsOfSpeedScript.txt" },
+    sizeLegends: { title:"Size Legends Simulator", code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()', filename:"SizeLegendsSimulator.txt" }
+};
+
+function updateScript() {
+    const e = document.getElementById("scriptSelector").value;
+    document.getElementById("codeBox").innerText = scripts[e].code;
+    document.querySelector(".main h1").innerText = `🎮 ${scripts[e].title} 🛠️`;
+}
+
+function copyCode() {
+    navigator.clipboard.writeText(document.getElementById("codeBox").innerText).then(() => alert("✅ Copied!"));
+}
+
+function downloadCode() {
+    const e = document.getElementById("scriptSelector").value;
+    const c = scripts[e].code;
+    const t = new Blob([c], {type:"text/plain"});
+    const l = document.createElement("a");
+    l.href = URL.createObjectURL(t);
+    l.download = scripts[e].filename;
+    l.click();
+}
+
+const textBox = document.getElementById("switchText");
+const messages = [
+    '<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; text-decoration: none;">Owner Discord</a>',
+    'Contact: <a href="mailto:robloxscripts045@gmail.com" style="color: var(--accent); text-decoration: none;">robloxscripts045@gmail.com</a>'
+];
+let index = 0;
+function switchMessage() {
+    textBox.innerHTML = messages[index];
+    index = (index + 1) % messages.length;
+}
+switchMessage();
+setInterval(switchMessage, 8000);
 </script>
 </body>
 </html>
