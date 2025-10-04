@@ -41,11 +41,11 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
     <option value="eggFarm">🥚 Egg Farm Sim</option>
     <option value="mm2">🩸 MM2 Script</option>
     <option value="nights99">🌲 99 Nights in the Forest</option>
-    <option value="unbox99">📦 Unbox 99 Nights</option>
     <option value="buildCar">🚗 Build a Car</option>
     <option value="oneBlock">🟩 One Block</option>
     <option value="legendsOfSpeed">🏎️ Legends Of Speed</option>
     <option value="sizeLegends">🦸 Size Legends Simulator</option>
+    <option value="unbox99">📦 Unbox 99 Nights</option>
   </select>
   <div>
     <button onclick="copyCode()">📋 Copy</button>
@@ -54,7 +54,7 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
 </div>
 <div class="main">
   <h1>🎮 Roblox Scripts Hub 🛠️</h1>
-  <div class="code-box" id="codeBox">loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()</div>
+  <div class="code-box" id="codeBox"></div>
 </div>
 <div id="fixedEmail">
   <a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a>
@@ -64,11 +64,11 @@ const scripts = {
     eggFarm: { title:"Egg Farm Sim", code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()', filename:"EggFarmSimScript.txt" },
     mm2: { title:"MM2 Script", code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()', filename:"MM2Script.txt" },
     nights99: { title:"99 Nights in the Forest", code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()', filename:"99NightsInTheForestScript.txt" },
-    unbox99: { title:"Unbox 99 Nights", code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()', filename:"Unbox99NightsScript.txt" },
     buildCar: { title:"Build a Car", code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()', filename:"BuildACarNeedsKey.txt" },
     oneBlock: { title:"One Block", code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()', filename:"OneBlockScript.txt" },
     legendsOfSpeed: { title:"Legends Of Speed", code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()', filename:"LegendsOfSpeedScript.txt" },
-    sizeLegends: { title:"Size Legends Simulator", code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()', filename:"SizeLegendsSimulator.txt" }
+    sizeLegends: { title:"Size Legends Simulator", code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()', filename:"SizeLegendsSimulator.txt" },
+    unbox99: { title:"Unbox 99 Nights", code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()', filename:"Unbox99NightsScript.txt" }
 };
 
 function updateScript() {
@@ -77,18 +77,13 @@ function updateScript() {
     document.querySelector(".main h1").innerText = `🎮 ${scripts[e].title} 🛠️`;
 }
 
-function copyCode() {
-    navigator.clipboard.writeText(document.getElementById("codeBox").innerText).then(() => alert("✅ Copied!"));
-}
+// Auto-load Unbox 99 Nights on page open
+document.getElementById("scriptSelector").value = "unbox99";
+updateScript();
 
-function downloadCode() {
-    const e = document.getElementById("scriptSelector").value;
-    const c = scripts[e].code;
-    const t = new Blob([c], {type:"text/plain"});
-    const l = document.createElement("a");
-    l.href = URL.createObjectURL(t);
-    l.download = scripts[e].filename;
-    l.click();
+function copyCode() {
+    navigator.clipboard.writeText(document.getElementById("codeBox").innerText)
+        .then(() => alert("✅ Copied!"));
 }
 
 const textBox = document.getElementById("switchText");
@@ -106,4 +101,3 @@ setInterval(switchMessage, 8000);
 </script>
 </body>
 </html>
-
