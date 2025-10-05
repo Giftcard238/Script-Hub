@@ -24,14 +24,18 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: fl
 .sidebar select:hover { transform: scale(1.05); }
 .main { flex: 1; display: flex; flex-direction: column; padding: 40px; gap: 20px; }
 .main h1 { font-size: 28px; color: var(--accent); text-shadow: 0 0 8px rgba(255,204,0,0.5); }
-.code-box { flex: 1; background: var(--code-bg); color: var(--code-text); border-radius: 12px; padding: 20px; font-family: 'Courier New', monospace; font-size: 14px; overflow-y: auto; box-shadow: 0 0 20px rgba(0,255,136,0.2); transition: box-shadow var(--transition); }
+.code-box { flex: 1; background: var(--code-bg); color: var(--code-text); border-radius: 12px; padding: 20px; font-family: 'Courier New', monospace; font-size: 14px; overflow-y: auto; box-shadow: 0 0 20px rgba(0,255,136,0.2); transition: box-shadow var(--transition); white-space: pre-wrap; }
 .code-box:hover { box-shadow: 0 0 25px rgba(0,255,136,0.5); }
-button { background: var(--accent); color: #000; border: none; border-radius: 12px; padding: 12px 25px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all var(--transition) ease; margin-right: 10px; }
+button { background: var(--accent); color: #000; border: none; border-radius: 12px; padding: 12px 25px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all var(--transition) ease; margin-right: 10px; margin-top: 10px; }
 button:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(255,204,0,0.4); }
 #fixedEmail { position: fixed; bottom: 15px; right: 15px; color: var(--accent); font-weight: bold; }
 #fixedEmail a { color: var(--accent); text-decoration: none; }
 #fixedEmail a:hover { text-decoration: underline; }
 #switchText { font-size: 14px; font-weight: bold; text-align: center; color: var(--text-muted); }
+.modal-bg { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:1000; }
+.modal { background: #1c1c2e; padding: 30px; border-radius: 15px; text-align:center; max-width:400px; color:#fff; box-shadow: 0 0 20px rgba(255,204,0,0.5); }
+.modal h2 { margin-bottom: 20px; color: var(--accent); }
+.modal button { margin-top: 15px; }
 </style>
 </head>
 <body>
@@ -49,16 +53,32 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
   </select>
   <div>
     <button onclick="copyCode()">📋 Copy</button>
+    <button onclick="openAccountsModal()">💰 Accounts for Sale</button>
   </div>
   <p id="switchText"></p>
 </div>
+
 <div class="main">
   <h1>🎮 Roblox Scripts Hub 🛠️</h1>
   <div class="code-box" id="codeBox"></div>
 </div>
+
+<div class="modal-bg" id="accountsModal">
+  <div class="modal">
+    <h2>Accounts for Sale</h2>
+    <p>Join the Discord: <strong>https://discord.gg/xvUeX64BWa</strong></p>
+    <p>DM the owner to get the account</p>
+    <p>Username: <strong>zephyr404alt</strong></p>
+    <button onclick="window.open('https://discord.gg/xvUeX64BWa', '_blank')">💬 Join Discord</button>
+    <br><br>
+    <button onclick="closeAccountsModal()">Close</button>
+  </div>
+</div>
+
 <div id="fixedEmail">
   <a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a>
 </div>
+
 <script>
 const scripts = {
     eggFarm: { title:"Egg Farm Sim", code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()', filename:"EggFarmSimScript.txt" },
@@ -77,13 +97,19 @@ function updateScript() {
     document.querySelector(".main h1").innerText = `🎮 ${scripts[e].title} 🛠️`;
 }
 
-// Auto-load Unbox 99 Nights on page open
 document.getElementById("scriptSelector").value = "unbox99";
 updateScript();
 
 function copyCode() {
     navigator.clipboard.writeText(document.getElementById("codeBox").innerText)
         .then(() => alert("✅ Copied!"));
+}
+
+function openAccountsModal() {
+    document.getElementById('accountsModal').style.display = 'flex';
+}
+function closeAccountsModal() {
+    document.getElementById('accountsModal').style.display = 'none';
 }
 
 const textBox = document.getElementById("switchText");
