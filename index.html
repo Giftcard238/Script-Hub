@@ -50,6 +50,7 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
     <option value="legendsOfSpeed">🏎️ Legends Of Speed</option>
     <option value="sizeLegends">🦸 Size Legends Simulator</option>
     <option value="unbox99">📦 Unbox 99 Nights</option>
+    <option value="robABank">🏦 Rob a Bank</option>
   </select>
   <div>
     <button onclick="copyCode()">📋 Copy</button>
@@ -88,42 +89,10 @@ const scripts = {
     oneBlock: { title:"One Block", code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()', filename:"OneBlockScript.txt" },
     legendsOfSpeed: { title:"Legends Of Speed", code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()', filename:"LegendsOfSpeedScript.txt" },
     sizeLegends: { title:"Size Legends Simulator", code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()', filename:"SizeLegendsSimulator.txt" },
-    unbox99: { title:"Unbox 99 Nights", code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()', filename:"Unbox99NightsScript.txt" }
+    unbox99: { title:"Unbox 99 Nights", code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()', filename:"Unbox99NightsScript.txt" },
+    robABank: { title: "Rob a Bank", code: 'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()', filename:"RobABankScript.txt" }
 };
 
 function updateScript() {
     const e = document.getElementById("scriptSelector").value;
-    document.getElementById("codeBox").innerText = scripts[e].code;
-    document.querySelector(".main h1").innerText = `🎮 ${scripts[e].title} 🛠️`;
-}
-
-document.getElementById("scriptSelector").value = "unbox99";
-updateScript();
-
-function copyCode() {
-    navigator.clipboard.writeText(document.getElementById("codeBox").innerText)
-        .then(() => alert("✅ Copied!"));
-}
-
-function openAccountsModal() {
-    document.getElementById('accountsModal').style.display = 'flex';
-}
-function closeAccountsModal() {
-    document.getElementById('accountsModal').style.display = 'none';
-}
-
-const textBox = document.getElementById("switchText");
-const messages = [
-    '<a href="https://discord.gg/xvUeX64BWa" target="_blank" style="color: cyan; text-decoration: none;">Owner Discord</a>',
-    'Contact: <a href="mailto:robloxscripts045@gmail.com" style="color: var(--accent); text-decoration: none;">robloxscripts045@gmail.com</a>'
-];
-let index = 0;
-function switchMessage() {
-    textBox.innerHTML = messages[index];
-    index = (index + 1) % messages.length;
-}
-switchMessage();
-setInterval(switchMessage, 8000);
-</script>
-</body>
-</html>
+    document.getElementById("codeBox").innerT
