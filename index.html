@@ -82,17 +82,22 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
 
 <script>
 const scripts = {
-    eggFarm: { title:"Egg Farm Sim", code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()', filename:"EggFarmSimScript.txt" },
-    mm2: { title:"MM2 Script", code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()', filename:"MM2Script.txt" },
-    nights99: { title:"99 Nights in the Forest", code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()', filename:"99NightsInTheForestScript.txt" },
-    buildCar: { title:"Build a Car", code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()', filename:"BuildACarNeedsKey.txt" },
-    oneBlock: { title:"One Block", code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()', filename:"OneBlockScript.txt" },
-    legendsOfSpeed: { title:"Legends Of Speed", code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()', filename:"LegendsOfSpeedScript.txt" },
-    sizeLegends: { title:"Size Legends Simulator", code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()', filename:"SizeLegendsSimulator.txt" },
-    unbox99: { title:"Unbox 99 Nights", code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()', filename:"Unbox99NightsScript.txt" },
-    robABank: { title: "Rob a Bank", code: 'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()', filename:"RobABankScript.txt" }
+  eggFarm:{code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()'},
+  mm2:{code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()'},
+  nights99:{code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()'},
+  buildCar:{code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()'},
+  oneBlock:{code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()'},
+  legendsOfSpeed:{code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()'},
+  sizeLegends:{code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()'},
+  unbox99:{code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()'},
+  robABank:{code:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()'}
 };
-
-function updateScript() {
-    const e = document.getElementById("scriptSelector").value;
-    document.getElementById("codeBox").innerT
+const codeBox=document.getElementById("codeBox");
+function updateScript(){const e=document.getElementById("scriptSelector").value;codeBox.textContent=scripts[e].code;}
+function copyCode(){navigator.clipboard.writeText(codeBox.textContent);}
+function openAccountsModal(){document.getElementById("accountsModal").style.display="flex";}
+function closeAccountsModal(){document.getElementById("accountsModal").style.display="none";}
+window.onload=()=>{document.getElementById("scriptSelector").value="eggFarm";updateScript();}
+</script>
+</body>
+</html>
