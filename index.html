@@ -52,6 +52,7 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
     <option value="unbox99">📦 Unbox 99 Nights</option>
     <option value="robABank">🏦 Rob a Bank</option>
     <option value="mergeGubby">🪄 Merge a Gubby</option>
+    <option value="fishBrainrot">🐟 Fish a Brainrot Script</option> <!-- new -->
   </select>
   <div>
     <button onclick="copyCode()">📋 Copy</button>
@@ -91,34 +92,36 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
 </div>
 
 <script>
-const scripts={
-eggFarm:{code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()'},
-mm2:{code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()'},
-nights99:{code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()'},
-buildCar:{code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()'},
-oneBlock:{code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()'},
-legendsOfSpeed:{code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()'},
-sizeLegends:{code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()'},
-unbox99:{code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()'},
-robABank:{code:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()'},
-mergeGubby:{code:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()'}
+const scripts = {
+  eggFarm: { code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()' },
+  mm2: { code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()' },
+  nights99: { code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()' },
+  buildCar: { code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()' },
+  oneBlock: { code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()' },
+  legendsOfSpeed: { code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()' },
+  sizeLegends: { code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()' },
+  unbox99: { code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()' },
+  robABank: { code:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()' },
+  mergeGubby: { code:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()' },
+  fishBrainrot: { code:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()' }
 };
-const codeBox=document.getElementById("codeBox");
+
+const codeBox = document.getElementById("codeBox");
 function updateScript(){
-const e=document.getElementById("scriptSelector").value;
-if(e==="unbox99"||e==="robABank"){
-document.getElementById("gamepassModal").style.display="flex";
-document.getElementById("gotoGamepass").onclick=()=>window.open("https://www.roblox.com/game-pass/1499478384","_blank");
-}
-codeBox.textContent=scripts[e].code;
+  const e = document.getElementById("scriptSelector").value;
+  if (e==="unbox99" || e==="robABank"){
+    document.getElementById("gamepassModal").style.display="flex";
+    document.getElementById("gotoGamepass").onclick=()=>window.open("https://www.roblox.com/game-pass/1499478384","_blank");
+  }
+  codeBox.textContent = scripts[e].code;
 }
 function copyCode(){navigator.clipboard.writeText(codeBox.textContent);}
 function openAccountsModal(){document.getElementById("accountsModal").style.display="flex";}
 function closeAccountsModal(){document.getElementById("accountsModal").style.display="none";}
 function closeGamepassModal(){document.getElementById("gamepassModal").style.display="none";}
 window.onload=()=>{
-document.getElementById("scriptSelector").value="eggFarm";
-updateScript();
+  document.getElementById("scriptSelector").value="eggFarm";
+  updateScript();
 };
 </script>
 </body>
