@@ -52,7 +52,8 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
     <option value="unbox99">📦 Unbox 99 Nights</option>
     <option value="robABank">🏦 Rob a Bank</option>
     <option value="mergeGubby">🪄 Merge a Gubby</option>
-    <option value="fishBrainrot">🐟 Fish a Brainrot Script</option> <!-- new -->
+    <option value="fishBrainrot">🐟 Fish a Brainrot Script</option>
+    <option value="micUp">🎤 Mic up Script</option>
   </select>
   <div>
     <button onclick="copyCode()">📋 Copy</button>
@@ -92,6 +93,7 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
 </div>
 
 <script>
+const codeBox = document.getElementById("codeBox");
 const scripts = {
   eggFarm: { code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()' },
   mm2: { code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()' },
@@ -103,10 +105,10 @@ const scripts = {
   unbox99: { code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()' },
   robABank: { code:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()' },
   mergeGubby: { code:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()' },
-  fishBrainrot: { code:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()' }
+  fishBrainrot: { code:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()' },
+  micUp: { code:'loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()' }
 };
 
-const codeBox = document.getElementById("codeBox");
 function updateScript(){
   const e = document.getElementById("scriptSelector").value;
   if (e==="unbox99" || e==="robABank"){
@@ -115,10 +117,12 @@ function updateScript(){
   }
   codeBox.textContent = scripts[e].code;
 }
+
 function copyCode(){navigator.clipboard.writeText(codeBox.textContent);}
 function openAccountsModal(){document.getElementById("accountsModal").style.display="flex";}
 function closeAccountsModal(){document.getElementById("accountsModal").style.display="none";}
 function closeGamepassModal(){document.getElementById("gamepassModal").style.display="none";}
+
 window.onload=()=>{
   document.getElementById("scriptSelector").value="eggFarm";
   updateScript();
