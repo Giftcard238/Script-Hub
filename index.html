@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roblox Scripts Hub</title>
+<title>MTNDEW Script Website</title>
 <style>
 :root {
   --bg: #0a0a0f;
@@ -24,6 +24,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: fl
 .sidebar select:hover { transform: scale(1.05); }
 .main { flex: 1; display: flex; flex-direction: column; padding: 40px; gap: 20px; }
 .main h1 { font-size: 28px; color: var(--accent); text-shadow: 0 0 8px rgba(255,204,0,0.5); }
+.banner { background: linear-gradient(90deg, #ffcc00, #ffaa00); color: #000; text-align: center; font-weight: bold; padding: 15px; border-radius: 12px; font-size: 18px; box-shadow: 0 0 15px rgba(255,204,0,0.5); margin-bottom: 20px; }
 .code-box { flex: 1; background: var(--code-bg); color: var(--code-text); border-radius: 12px; padding: 20px; font-family: 'Courier New', monospace; font-size: 14px; overflow-y: auto; box-shadow: 0 0 20px rgba(0,255,136,0.2); transition: box-shadow var(--transition); white-space: pre-wrap; }
 .code-box:hover { box-shadow: 0 0 25px rgba(0,255,136,0.5); }
 button { background: var(--accent); color: #000; border: none; border-radius: 12px; padding: 12px 25px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all var(--transition) ease; margin-right: 10px; margin-top: 10px; }
@@ -61,12 +62,11 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
   </div>
   <p id="switchText"></p>
 </div>
-
 <div class="main">
+  <div class="banner">MTNDEW Script Website</div>
   <h1>🎮 Roblox Scripts Hub 🛠️</h1>
   <div class="code-box" id="codeBox"></div>
 </div>
-
 <div class="modal-bg" id="accountsModal">
   <div class="modal">
     <h2>Accounts for Sale</h2>
@@ -78,7 +78,6 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
     <button onclick="closeAccountsModal()">Close</button>
   </div>
 </div>
-
 <div class="modal-bg" id="gamepassModal">
   <div class="modal">
     <h2>⚠️ Warning</h2>
@@ -87,46 +86,35 @@ button:hover { background: var(--accent-hover); transform: translateY(-2px); box
     <button onclick="closeGamepassModal()">Close</button>
   </div>
 </div>
-
 <div id="fixedEmail">
   <a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a>
 </div>
-
 <script>
 const codeBox = document.getElementById("codeBox");
 const scripts = {
-  eggFarm: { code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()' },
-  mm2: { code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()' },
-  nights99: { code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()' },
-  buildCar: { code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()' },
-  oneBlock: { code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()' },
-  legendsOfSpeed: { code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()' },
-  sizeLegends: { code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()' },
-  unbox99: { code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()' },
-  robABank: { code:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()' },
-  mergeGubby: { code:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()' },
-  fishBrainrot: { code:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()' },
-  micUp: { code:'loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()' }
+  eggFarm:{code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()'},
+  mm2:{code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()'},
+  nights99:{code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()'},
+  buildCar:{code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()'},
+  oneBlock:{code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()'},
+  legendsOfSpeed:{code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()'},
+  sizeLegends:{code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()'},
+  unbox99:{code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()'},
+  robABank:{code:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()'},
+  mergeGubby:{code:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()'},
+  fishBrainrot:{code:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()'},
+  micUp:{code:'loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()'}
 };
-
 function updateScript(){
-  const e = document.getElementById("scriptSelector").value;
-  if (e==="unbox99" || e==="robABank"){
-    document.getElementById("gamepassModal").style.display="flex";
-    document.getElementById("gotoGamepass").onclick=()=>window.open("https://www.roblox.com/game-pass/1499478384","_blank");
-  }
-  codeBox.textContent = scripts[e].code;
+  const e=document.getElementById("scriptSelector").value;
+  if(e==="unbox99"||e==="robABank"){document.getElementById("gamepassModal").style.display="flex";document.getElementById("gotoGamepass").onclick=()=>window.open("https://www.roblox.com/game-pass/1499478384","_blank");}
+  codeBox.textContent=scripts[e].code;
 }
-
 function copyCode(){navigator.clipboard.writeText(codeBox.textContent);}
 function openAccountsModal(){document.getElementById("accountsModal").style.display="flex";}
 function closeAccountsModal(){document.getElementById("accountsModal").style.display="none";}
 function closeGamepassModal(){document.getElementById("gamepassModal").style.display="none";}
-
-window.onload=()=>{
-  document.getElementById("scriptSelector").value="eggFarm";
-  updateScript();
-};
+window.onload=()=>{document.getElementById("scriptSelector").value="eggFarm";updateScript();}
 </script>
 </body>
 </html>
