@@ -3,125 +3,214 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MTNDEW Script Website</title>
+<title>MTNDEW Script Hub</title>
 <meta property="og:title" content="MTNDEW Script Website">
 <meta property="og:description" content="Explore all the latest Roblox scripts with MTNDEW! Egg Farms, MM2, Legends of Speed, and more.">
 <meta property="og:url" content="https://giftcard238.github.io/Script-Hub/">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0a0f;
-  --sidebar: #1c1c2e;
-  --accent: #ffcc00;
-  --accent-hover: #ffaa00;
-  --text: #fff;
-  --text-muted: #aaa;
-  --code-bg: #111;
-  --code-text: #00ff88;
-  --transition: 0.25s;
+  --bg-dark: #05050a;
+  --bg-light: #f9f9f9;
+  --sidebar-gradient: linear-gradient(145deg, #1b1b2e, #23233e);
+  --text-dark: #e9f7f6;
+  --text-light: #000;
+  --accent-dark: #ffdd6b;
+  --accent-light: #000;
+  --code-bg-dark: #111122;
+  --code-bg-light: #eaeaea;
+  --code-text-dark: #a6ffd6;
+  --code-text-light: #000;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; height: 100vh; background: var(--bg); color: var(--text); overflow: hidden; }
-.sidebar { width: 250px; background: var(--sidebar); display: flex; flex-direction: column; align-items: center; padding: 30px 10px; box-shadow: 4px 0 20px rgba(0,0,0,0.6); }
-.sidebar h2 { color: var(--accent); margin-bottom: 30px; text-align: center; text-shadow: 0 0 8px rgba(255,204,0,0.6); }
-.sidebar select { width: 90%; padding: 12px; border-radius: 10px; border: none; background: #222; color: var(--text); font-weight: bold; cursor: pointer; font-size: 15px; margin-bottom: 20px; transition: transform var(--transition); }
-.sidebar select:hover { transform: scale(1.05); }
-.main { flex: 1; display: flex; flex-direction: column; padding: 40px; gap: 20px; }
-.main h1 { font-size: 28px; color: var(--accent); text-shadow: 0 0 8px rgba(255,204,0,0.5); }
-.code-box { flex: 1; background: var(--code-bg); color: var(--code-text); border-radius: 12px; padding: 20px; font-family: 'Courier New', monospace; font-size: 14px; overflow-y: auto; box-shadow: 0 0 20px rgba(0,255,136,0.2); transition: box-shadow var(--transition); white-space: pre-wrap; }
-.code-box:hover { box-shadow: 0 0 25px rgba(0,255,136,0.5); }
-button { background: var(--accent); color: #000; border: none; border-radius: 12px; padding: 12px 25px; font-weight: bold; cursor: pointer; font-size: 15px; transition: all var(--transition) ease; margin-right: 10px; margin-top: 10px; }
-button:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(255,204,0,0.4); }
-#fixedEmail { position: fixed; bottom: 15px; right: 15px; color: var(--accent); font-weight: bold; }
-#fixedEmail a { color: var(--accent); text-decoration: none; }
-#fixedEmail a:hover { text-decoration: underline; }
-#switchText { font-size: 14px; font-weight: bold; text-align: center; color: var(--text-muted); }
-.modal-bg { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:1000; }
-.modal { background: #1c1c2e; padding: 30px; border-radius: 15px; text-align:center; max-width:400px; color:#fff; box-shadow: 0 0 20px rgba(255,204,0,0.5); }
-.modal h2 { margin-bottom: 20px; color: var(--accent); }
-.modal button { margin-top: 15px; }
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+.app {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  width: 100%;
+  gap: 20px;
+  padding: 20px;
+}
+.sidebar {
+  background: var(--sidebar-gradient);
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+.brand h2 {
+  margin: 0;
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-size: 22px;
+  text-shadow: 0 0 10px rgba(255,221,107,0.5);
+  transition: color 0.3s ease;
+  text-align: center;
+}
+.select select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.select select:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+.select select option {
+  color: #000;
+  background: #fff;
+}
+button {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  background: var(--accent-dark);
+  color: #000;
+  box-shadow: 0 5px 15px rgba(255,221,107,0.4);
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255,221,107,0.6);
+}
+.main-title {
+  font-size: 28px;
+  color: #ffdd6b;
+  text-shadow: 0 0 8px rgba(255,221,107,0.7);
+  transition: color 0.3s ease;
+}
+.code-box {
+  padding: 15px;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  transition: all 0.3s ease;
+}
+.fixed-email {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  font-weight: bold;
+  color: var(--accent-dark);
+}
+.fixed-email a {
+  color: inherit;
+  text-decoration: none;
+}
+.discord-link {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+  color: #ffdd6b;
+}
+.discord-link a {
+  color: #ffdd6b;
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
-<div class="sidebar">
-  <h2>🎮 Scripts Hub</h2>
-  <select id="scriptSelector" onchange="updateScript()">
-    <option value="eggFarm">🥚 Egg Farm Sim</option>
-    <option value="mm2">🩸 MM2 Script</option>
-    <option value="nights99">🌲 99 Nights in the Forest</option>
-    <option value="buildCar">🚗 Build a Car</option>
-    <option value="oneBlock">🟩 One Block</option>
-    <option value="legendsOfSpeed">🏎️ Legends Of Speed</option>
-    <option value="sizeLegends">🦸 Size Legends Simulator</option>
-    <option value="unbox99">📦 Unbox 99 Nights</option>
-    <option value="robABank">🏦 Rob a Bank</option>
-    <option value="mergeGubby">🪄 Merge a Gubby</option>
-    <option value="fishBrainrot">🐟 Fish a Brainrot Script</option>
-    <option value="micUp">🎤 Mic up Script</option>
-    <option value="dontWakeBrainrots">🧠 Don't Wake the Brainrots</option>
-  </select>
-  <div>
-    <button onclick="copyCode()">📋 Copy</button>
-    <button onclick="openAccountsModal()">💰 Accounts for Sale</button>
+<div class="app">
+  <div class="sidebar">
+    <div class="brand"><h2 id="sidebarTitle">🎮 MTNDEW Scripts</h2></div>
+    <div class="select">
+      <select id="scriptSelector" onchange="updateScript()">
+        <option value="eggFarm">🥚 Egg Farm Sim</option>
+        <option value="mm2">🩸 MM2 Script</option>
+        <option value="nights99">🌲 99 Nights in Forest</option>
+        <option value="buildCar">🚗 Build a Car</option>
+        <option value="oneBlock">🟩 One Block</option>
+        <option value="legendsOfSpeed">🏎️ Legends Of Speed</option>
+        <option value="sizeLegends">🦸 Size Legends Simulator</option>
+        <option value="unbox99">📦 Unbox 99 Nights</option>
+        <option value="robABank">🏦 Rob a Bank</option>
+        <option value="mergeGubby">🪄 Merge a Gubby</option>
+        <option value="fishBrainrot">🐟 Fish a Brainrot Script</option>
+        <option value="micUp">🎤 Mic up Script</option>
+        <option value="dontWakeBrainrots">🧠 Don't Wake the Brainrots</option>
+      </select>
+    </div>
+    <button onclick="copyCode()">📋 Copy Script</button>
+    <button onclick="toggleMode()" id="modeBtn">🌙</button>
+    <p class="discord-link">Owner's Discord: <a href="https://discord.gg/xvUeX64BWa" target="_blank">Join Here</a></p>
   </div>
-  <p id="switchText"></p>
-</div>
-<div class="main">
-  <h1>🎮 Roblox Scripts Hub 🛠️</h1>
-  <div class="code-box" id="codeBox"></div>
-</div>
-<div class="modal-bg" id="accountsModal">
-  <div class="modal">
-    <h2>Accounts for Sale</h2>
-    <p>Join the Discord: <strong>https://discord.gg/xvUeX64BWa</strong></p>
-    <p>DM the owner to get the account</p>
-    <p>Username: <strong>zephyr404alt</strong></p>
-    <button onclick="window.open('https://discord.gg/xvUeX64BWa', '_blank')">💬 Join Discord</button>
-    <br><br>
-    <button onclick="closeAccountsModal()">Close</button>
+  <div class="main">
+    <h1 class="main-title" id="mainTitle">🎮 Roblox Scripts Hub 🛠️</h1>
+    <div class="code-box" id="codeBox" style="background: var(--code-bg-dark); color: var(--code-text-dark);">
+      loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
+    </div>
   </div>
 </div>
-<div class="modal-bg" id="gamepassModal">
-  <div class="modal">
-    <h2>⚠️ Warning</h2>
-    <p>You need a gamepass to run this script.</p>
-    <button id="gotoGamepass">Goto Gamepass</button>
-    <button onclick="closeGamepassModal()">Close</button>
-  </div>
-</div>
-<div id="fixedEmail">
-  <a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a>
-</div>
+<div class="fixed-email"><a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a></div>
 <script>
 const codeBox=document.getElementById("codeBox");
-const scripts={
-  eggFarm:{code:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()'},
-  mm2:{code:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()'},
-  nights99:{code:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()'},
-  buildCar:{code:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()'},
-  oneBlock:{code:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()'},
-  legendsOfSpeed:{code:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()'},
-  sizeLegends:{code:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()'},
-  unbox99:{code:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()'},
-  robABank:{code:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()'},
-  mergeGubby:{code:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()'},
-  fishBrainrot:{code:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()'},
-  micUp:{code:'loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()'},
-  dontWakeBrainrots:{code:'loadstring(game:HttpGet("https://pastefy.app/nJwc6aku/raw"))()'}
-};
+const sidebarTitle=document.getElementById("sidebarTitle");
+const mainTitle=document.getElementById("mainTitle");
+const modeBtn=document.getElementById("modeBtn");
+let darkMode=true;
 function updateScript(){
   const e=document.getElementById("scriptSelector").value;
-  if(e==="unbox99"||e==="robABank"){
-    document.getElementById("gamepassModal").style.display="flex";
-    document.getElementById("gotoGamepass").onclick=()=>window.open("https://www.roblox.com/game-pass/1499478384","_blank");
-  }
-  codeBox.textContent=scripts[e].code;
+  const scripts={
+    eggFarm:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()',
+    mm2:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()',
+    nights99:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()',
+    buildCar:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()',
+    oneBlock:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()',
+    legendsOfSpeed:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()',
+    sizeLegends:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()',
+    unbox99:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()',
+    robABank:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()',
+    mergeGubby:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()',
+    fishBrainrot:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()',
+    micUp:'loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()',
+    dontWakeBrainrots:'loadstring(game:HttpGet("https://pastefy.app/nJwc6aku/raw"))()'
+  };
+  codeBox.textContent=scripts[e];
 }
 function copyCode(){navigator.clipboard.writeText(codeBox.textContent);}
-function openAccountsModal(){document.getElementById("accountsModal").style.display="flex";}
-function closeAccountsModal(){document.getElementById("accountsModal").style.display="none";}
-function closeGamepassModal(){document.getElementById("gamepassModal").style.display="none";}
-window.onload=()=>{document.getElementById("scriptSelector").value="eggFarm";updateScript();}
+function toggleMode(){
+  darkMode=!darkMode;
+  if(darkMode){
+    document.body.style.background="var(--bg-dark)";
+    document.body.style.color="var(--text-dark)";
+    sidebarTitle.style.color="var(--accent-dark)";
+    mainTitle.style.color="var(--accent-dark)";
+    codeBox.style.background="var(--code-bg-dark)";
+    codeBox.style.color="var(--code-text-dark)";
+    modeBtn.textContent="🌙";
+  }else{
+    document.body.style.background="var(--bg-light)";
+    document.body.style.color="var(--text-light)";
+    sidebarTitle.style.color="var(--accent-dark)";
+    mainTitle.style.color="var(--accent-light)";
+    codeBox.style.background="var(--code-bg-light)";
+    codeBox.style.color="var(--code-text-light)";
+    modeBtn.textContent="☀️";
+  }
+}
+window.onload=()=>{updateScript();}
 </script>
 </body>
 </html>
