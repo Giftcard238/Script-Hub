@@ -4,131 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MTNDEW Script Hub</title>
-<meta property="og:title" content="MTNDEW Script Website">
-<meta property="og:description" content="Explore all the latest Roblox scripts with MTNDEW! Egg Farms, MM2, Legends of Speed, and more.">
-<meta property="og:url" content="https://giftcard238.github.io/Script-Hub/">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg-dark: #05050a;
-  --bg-light: #f9f9f9;
-  --sidebar-gradient: linear-gradient(145deg, #1b1b2e, #23233e);
-  --text-dark: #e9f7f6;
-  --text-light: #000;
-  --accent-dark: #ffdd6b;
-  --accent-light: #000;
-  --code-bg-dark: #111122;
-  --code-bg-light: #eaeaea;
-  --code-text-dark: #a6ffd6;
-  --code-text-light: #000;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  display: flex;
-  height: 100vh;
-  background: var(--bg-dark);
-  color: var(--text-dark);
-  transition: all 0.3s ease;
-}
-.app {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  width: 100%;
-  gap: 20px;
-  padding: 20px;
-}
-.sidebar {
-  background: var(--sidebar-gradient);
-  border-radius: 20px;
-  padding: 30px 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  transition: all 0.3s ease;
-}
-.brand h2 {
-  margin: 0;
-  color: var(--accent-dark);
-  font-weight: 700;
-  font-size: 22px;
-  text-shadow: 0 0 10px rgba(255,221,107,0.5);
-  transition: color 0.3s ease;
-  text-align: center;
-}
-.select select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.select select:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-.select select option {
-  color: #000;
-  background: #fff;
-}
-button {
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  background: var(--accent-dark);
-  color: #000;
-  box-shadow: 0 5px 15px rgba(255,221,107,0.4);
-}
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255,221,107,0.6);
-}
-.main-title {
-  font-size: 28px;
-  color: #ffdd6b;
-  text-shadow: 0 0 8px rgba(255,221,107,0.7);
-  transition: color 0.3s ease;
-}
-.code-box {
-  padding: 15px;
-  border-radius: 12px;
-  font-family: 'JetBrains Mono', monospace;
-  overflow-y: auto;
-  white-space: pre-wrap;
-  transition: all 0.3s ease;
-}
-.fixed-email {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  font-weight: bold;
-  color: var(--accent-dark);
-}
-.fixed-email a {
-  color: inherit;
-  text-decoration: none;
-}
-.discord-link {
-  margin-top: 10px;
-  font-size: 13px;
-  text-align: center;
-  color: #ffdd6b;
-}
-.discord-link a {
-  color: #ffdd6b;
-  text-decoration: underline;
-}
+:root {--bg-dark:#05050a;--bg-light:#f9f9f9;--sidebar-gradient:linear-gradient(145deg,#1b1b2e,#23233e);--text-dark:#e9f7f6;--text-light:#000;--accent-dark:#ffdd6b;--accent-light:#000;--code-bg-dark:#111122;--code-bg-light:#eaeaea;--code-text-dark:#a6ffd6;--code-text-light:#000;}
+body {font-family:'Poppins',sans-serif;margin:0;display:flex;height:100vh;background:var(--bg-dark);color:var(--text-dark);transition:all 0.3s ease;}
+.app {display:grid;grid-template-columns:300px 1fr;width:100%;gap:20px;padding:20px;position:relative;}
+.sidebar {background:var(--sidebar-gradient);border-radius:20px;padding:30px 20px;box-shadow:0 15px 40px rgba(0,0,0,0.6);display:flex;flex-direction:column;gap:20px;transition:all 0.3s ease;}
+.brand h2 {margin:0;color:var(--accent-dark);font-weight:700;font-size:22px;text-shadow:0 0 10px rgba(255,221,107,0.5);transition:color 0.3s ease;text-align:center;}
+.select select {width:100%;padding:12px;border-radius:12px;border:none;color:#000;font-weight:600;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.3);transition:transform 0.2s ease, box-shadow 0.2s ease;}
+.select select:hover {transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+.select select option {color:#000;background:#fff;}
+button {padding:12px;border-radius:12px;border:none;cursor:pointer;font-weight:bold;transition:all 0.3s ease;background:var(--accent-dark);color:#000;box-shadow:0 5px 15px rgba(255,221,107,0.4);}
+button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,0.6);}
+.main-title {font-size:28px;color:#ffdd6b;text-shadow:0 0 8px rgba(255,221,107,0.7);transition:color 0.3s ease;}
+.code-box {padding:15px;border-radius:12px;font-family:'JetBrains Mono',monospace;overflow-y:auto;white-space:pre-wrap;transition:all 0.3s ease;}
+.fixed-email {position:fixed;bottom:15px;right:15px;font-weight:bold;color:var(--accent-dark);}
+.fixed-email a {color:inherit;text-decoration:none;}
+.discord-link {margin-top:10px;font-size:13px;text-align:center;color:#ffdd6b;}
+.discord-link a {color:#ffdd6b;text-decoration:underline;}
+#signUpModal {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;}
+#signUpModal .modal-content {background:var(--bg-dark);padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:15px;width:300px;text-align:center;}
+#signUpModal input {padding:10px;border-radius:10px;border:none;}
+#topRight {position:absolute;top:20px;right:20px;display:flex;align-items:center;gap:10px;cursor:pointer;}
+#topRight img {width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-dark);}
 </style>
 </head>
 <body>
@@ -154,6 +52,7 @@ button:hover {
     </div>
     <button onclick="copyCode()">📋 Copy Script</button>
     <button onclick="toggleMode()" id="modeBtn">🌙</button>
+    <button id="signUpBtn">📝 Sign Up</button>
     <p class="discord-link">Owner's Discord: <a href="https://discord.gg/xvUeX64BWa" target="_blank">Join Here</a></p>
   </div>
   <div class="main">
@@ -162,8 +61,27 @@ button:hover {
       loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
     </div>
   </div>
+  <div id="topRight" style="display:none;">
+    <img id="profilePic" src="" alt="">
+    <span id="displayName"></span>
+  </div>
 </div>
+
+<div id="signUpModal">
+  <div class="modal-content">
+    <h2 style="color:var(--accent-dark);margin:0;">Sign Up</h2>
+    <input type="email" id="signUpEmail" placeholder="Email"/>
+    <input type="password" id="signUpPassword" placeholder="Password"/>
+    <input type="text" id="signUpUsername" placeholder="Username"/>
+    <button id="submitSignUp">Submit</button>
+    <button onclick="document.getElementById('signUpModal').style.display='none'">Close</button>
+  </div>
+</div>
+
+<input type="file" id="uploadImage" accept="image/*" style="display:none;">
+
 <div class="fixed-email"><a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a></div>
+
 <script>
 const codeBox=document.getElementById("codeBox");
 const sidebarTitle=document.getElementById("sidebarTitle");
@@ -210,6 +128,56 @@ function toggleMode(){
     modeBtn.textContent="☀️";
   }
 }
+
+const signUpBtn = document.getElementById("signUpBtn");
+const signUpModal = document.getElementById("signUpModal");
+const submitSignUp = document.getElementById("submitSignUp");
+const topRight = document.getElementById("topRight");
+const displayName = document.getElementById("displayName");
+const profilePic = document.getElementById("profilePic");
+const uploadImage = document.getElementById("uploadImage");
+let currentUser = {};
+
+signUpBtn.addEventListener("click",()=>{signUpModal.style.display="flex";});
+submitSignUp.addEventListener("click",()=>{
+  const email=document.getElementById("signUpEmail").value;
+  const password=document.getElementById("signUpPassword").value;
+  const username=document.getElementById("signUpUsername").value;
+  if(!email||!password||!username) return alert("Fill all fields!");
+  currentUser={email,password,username,img:""};
+  localStorage.setItem("userData",JSON.stringify(currentUser));
+  displayName.textContent=username;
+  profilePic.src="";
+  topRight.style.display="flex";
+  signUpModal.style.display="none";
+  document.getElementById("signUpEmail").value="";
+  document.getElementById("signUpPassword").value="";
+  document.getElementById("signUpUsername").value="";
+});
+
+profilePic.addEventListener("click",()=>{uploadImage.click();});
+displayName.addEventListener("click",()=>{uploadImage.click();});
+uploadImage.addEventListener("change",(e)=>{
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(event){
+    profilePic.src=event.target.result;
+    currentUser.img=event.target.result;
+    localStorage.setItem("userData",JSON.stringify(currentUser));
+  }
+  reader.readAsDataURL(file);
+});
+
+window.addEventListener("load",()=>{
+  const savedUser=localStorage.getItem("userData");
+  if(savedUser){
+    currentUser=JSON.parse(savedUser);
+    displayName.textContent=currentUser.username;
+    profilePic.src=currentUser.img||"";
+    topRight.style.display="flex";
+  }
+});
 window.onload=()=>{updateScript();}
 </script>
 </body>
