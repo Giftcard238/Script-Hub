@@ -49,6 +49,7 @@ button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,
         <option value="micUp">🎤 Mic up Script</option>
         <option value="dontWakeBrainrots">🧠 Don't Wake the Brainrots</option>
         <option value="dontGetCrushed">🪨 Don't Get Crushed By a Giant Rock</option>
+        <option value="buildABoat">⛵ Build a Boat</option>
       </select>
     </div>
     <button onclick="copyCode()">📋 Copy Script</button>
@@ -67,7 +68,6 @@ button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,
     <span id="displayName"></span>
   </div>
 </div>
-
 <div id="signUpModal">
   <div class="modal-content">
     <h2 style="color:var(--accent-dark);margin:0;">Sign Up</h2>
@@ -78,10 +78,8 @@ button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,
     <button onclick="document.getElementById('signUpModal').style.display='none'">Close</button>
   </div>
 </div>
-
 <input type="file" id="uploadImage" accept="image/*" style="display:none;">
 <div class="fixed-email"><a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a></div>
-
 <script>
 const codeBox=document.getElementById("codeBox");
 const sidebarTitle=document.getElementById("sidebarTitle");
@@ -104,7 +102,8 @@ function updateScript(){
     fishBrainrot:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()',
     micUp:'loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()',
     dontWakeBrainrots:'loadstring(game:HttpGet("https://pastefy.app/nJwc6aku/raw"))()',
-    dontGetCrushed:'loadstring(game:HttpGet("https://pastefy.app/EDfN8cy0/raw"))()'
+    dontGetCrushed:'loadstring(game:HttpGet("https://pastefy.app/EDfN8cy0/raw"))()',
+    buildABoat:'loadstring(game:HttpGet("https://pastefy.app/Qbo8kg0O/raw"))()'
   };
   codeBox.textContent=scripts[e];
 }
@@ -129,7 +128,6 @@ function toggleMode(){
     modeBtn.textContent="☀️";
   }
 }
-
 const signUpBtn=document.getElementById("signUpBtn");
 const signUpModal=document.getElementById("signUpModal");
 const submitSignUp=document.getElementById("submitSignUp");
@@ -138,7 +136,6 @@ const displayName=document.getElementById("displayName");
 const profilePic=document.getElementById("profilePic");
 const uploadImage=document.getElementById("uploadImage");
 let currentUser={};
-
 signUpBtn.addEventListener("click",()=>{signUpModal.style.display="flex";});
 submitSignUp.addEventListener("click",()=>{
   const email=document.getElementById("signUpEmail").value;
@@ -155,7 +152,6 @@ submitSignUp.addEventListener("click",()=>{
   document.getElementById("signUpPassword").value="";
   document.getElementById("signUpUsername").value="";
 });
-
 profilePic.addEventListener("click",()=>{uploadImage.click();});
 displayName.addEventListener("click",()=>{uploadImage.click();});
 uploadImage.addEventListener("change",(e)=>{
@@ -169,7 +165,6 @@ uploadImage.addEventListener("change",(e)=>{
   }
   reader.readAsDataURL(file);
 });
-
 window.addEventListener("load",()=>{
   const savedUser=localStorage.getItem("userData");
   if(savedUser){
