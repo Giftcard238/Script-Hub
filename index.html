@@ -6,27 +6,177 @@
 <title>MTNDEW Script Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root {--bg-dark:#05050a;--bg-light:#f9f9f9;--sidebar-gradient:linear-gradient(145deg,#1b1b2e,#23233e);--text-dark:#e9f7f6;--text-light:#000;--accent-dark:#ffdd6b;--accent-light:#000;--code-bg-dark:#111122;--code-bg-light:#eaeaea;--code-text-dark:#a6ffd6;--code-text-light:#000;}
-body {font-family:'Poppins',sans-serif;margin:0;display:flex;height:100vh;background:var(--bg-dark);color:var(--text-dark);transition:all 0.3s ease;}
-.app {display:grid;grid-template-columns:300px 1fr;width:100%;gap:20px;padding:20px;position:relative;}
-.sidebar {background:var(--sidebar-gradient);border-radius:20px;padding:30px 20px;box-shadow:0 15px 40px rgba(0,0,0,0.6);display:flex;flex-direction:column;gap:20px;transition:all 0.3s ease;}
-.brand h2 {margin:0;color:var(--accent-dark);font-weight:700;font-size:22px;text-shadow:0 0 10px rgba(255,221,107,0.5);transition:color 0.3s ease;text-align:center;}
-.select select {width:100%;padding:12px;border-radius:12px;border:none;color:#000;font-weight:600;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,0.3);transition:transform 0.2s ease, box-shadow 0.2s ease;}
-.select select:hover {transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
-.select select option {color:#000;background:#fff;}
-button {padding:12px;border-radius:12px;border:none;cursor:pointer;font-weight:bold;transition:all 0.3s ease;background:var(--accent-dark);color:#000;box-shadow:0 5px 15px rgba(255,221,107,0.4);}
-button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,0.6);}
-.main-title {font-size:28px;color:#ffdd6b;text-shadow:0 0 8px rgba(255,221,107,0.7);transition:color 0.3s ease;}
-.code-box {padding:15px;border-radius:12px;font-family:'JetBrains Mono',monospace;overflow-y:auto;white-space:pre-wrap;transition:all 0.3s ease;}
-.fixed-email {position:fixed;bottom:15px;right:15px;font-weight:bold;color:var(--accent-dark);}
-.fixed-email a {color:inherit;text-decoration:none;}
-.discord-link {margin-top:10px;font-size:13px;text-align:center;color:#ffdd6b;}
-.discord-link a {color:#ffdd6b;text-decoration:underline;}
-#signUpModal {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;}
-#signUpModal .modal-content {background:var(--bg-dark);padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:15px;width:300px;text-align:center;}
-#signUpModal input {padding:10px;border-radius:10px;border:none;}
-#topRight {position:absolute;top:20px;right:20px;display:flex;align-items:center;gap:10px;cursor:pointer;}
-#topRight img {width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-dark);}
+:root {
+  --bg-dark:#05050a;
+  --bg-light:#f9f9f9;
+  --sidebar-gradient:linear-gradient(145deg,#1b1b2e,#23233e);
+  --text-dark:#e9f7f6;
+  --text-light:#000;
+  --accent-dark:#ffdd6b;
+  --accent-light:#ff0080;
+  --code-bg-dark:#111122;
+  --code-bg-light:#eaeaea;
+  --code-text-dark:#a6ffd6;
+  --code-text-light:#000;
+  --btn-gradient:linear-gradient(90deg,#ff6ec7,#00f0ff);
+}
+body {
+  font-family:'Poppins',sans-serif;
+  margin:0;
+  display:flex;
+  height:100vh;
+  background:var(--bg-dark);
+  color:var(--text-dark);
+  transition:all 0.3s ease;
+}
+.app {
+  display:grid;
+  grid-template-columns:300px 1fr;
+  width:100%;
+  gap:20px;
+  padding:20px;
+  position:relative;
+}
+.sidebar {
+  background:var(--sidebar-gradient);
+  border-radius:20px;
+  padding:30px 20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.6);
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  transition:all 0.3s ease;
+}
+.brand h2 {
+  margin:0;
+  color:var(--accent-dark);
+  font-weight:700;
+  font-size:22px;
+  text-shadow:0 0 10px rgba(255,221,107,0.5);
+  text-align:center;
+}
+.select input {
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:10px;
+  border:none;
+  font-weight:600;
+}
+.select select {
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.select select:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+.select select option {
+  color:#000;
+  background:#fff;
+}
+button {
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
+  transition:all 0.3s ease;
+  background:var(--btn-gradient);
+  color:#fff;
+  box-shadow:0 5px 15px rgba(255,221,107,0.4);
+}
+button:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 25px rgba(255,221,107,0.6);
+}
+.main-title {
+  font-size:28px;
+  background:linear-gradient(90deg,#ff0080,#00f0ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 8px rgba(255,221,107,0.7);
+}
+.code-box {
+  padding:15px;
+  border-radius:12px;
+  font-family:'JetBrains Mono',monospace;
+  overflow-y:auto;
+  white-space:pre-wrap;
+  transition:all 0.3s ease;
+  background:var(--code-bg-dark);
+  color:var(--code-text-dark);
+}
+.fixed-email {
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  font-weight:bold;
+  color:var(--accent-dark);
+}
+.fixed-email a {
+  color:inherit;
+  text-decoration:none;
+}
+.discord-link {
+  margin-top:10px;
+  font-size:13px;
+  text-align:center;
+  color:#ff0080;
+}
+.discord-link a {
+  color:#ff0080;
+  text-decoration:underline;
+}
+#signUpModal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+}
+#signUpModal .modal-content {
+  background:var(--bg-dark);
+  padding:30px;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  width:300px;
+  text-align:center;
+}
+#signUpModal input {
+  padding:10px;
+  border-radius:10px;
+  border:none;
+}
+#topRight {
+  position:absolute;
+  top:20px;
+  right:20px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+}
+#topRight img {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--accent-dark);
+}
 </style>
 </head>
 <body>
@@ -34,23 +184,14 @@ button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,
   <div class="sidebar">
     <div class="brand"><h2 id="sidebarTitle">🎮 MTNDEW Scripts</h2></div>
     <div class="select">
-      <select id="scriptSelector" onchange="updateScript()">
-        <option value="eggFarm">🥚 Egg Farm Sim</option>
-        <option value="mm2">🩸 MM2 Script</option>
-        <option value="nights99">🌲 99 Nights in Forest</option>
-        <option value="buildCar">🚗 Build a Car</option>
-        <option value="oneBlock">🟩 One Block</option>
-        <option value="legendsOfSpeed">🏎️ Legends Of Speed</option>
-        <option value="sizeLegends">🦸 Size Legends Simulator</option>
-        <option value="unbox99">📦 Unbox 99 Nights</option>
-        <option value="robABank">🏦 Rob a Bank</option>
-        <option value="mergeGubby">🪄 Merge a Gubby</option>
-        <option value="fishBrainrot">🐟 Fish a Brainrot Script</option>
-        <option value="micUp">🎤 Mic up Script</option>
-        <option value="dontWakeBrainrots">🧠 Don't Wake the Brainrots</option>
-        <option value="dontGetCrushed">🪨 Don't Get Crushed By a Giant Rock</option>
-        <option value="buildABoat">⛵ Build a Boat</option>
-      </select>
+      <input type="text" id="searchInput" placeholder="🔍 Search scripts...">
+      <select id="scriptSelector" onchange="updateScript()"></select>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
+        <label style="display:flex;align-items:center;gap:8px;font-size:14px;">
+          <input type="checkbox" id="autoCopyToggle"> Auto Copy
+        </label>
+        <button id="favBtn" style="font-size:18px;background:none;color:#ff0080;box-shadow:none;">⭐</button>
+      </div>
     </div>
     <button onclick="copyCode()">📋 Copy Script</button>
     <button onclick="toggleMode()" id="modeBtn">🌙</button>
@@ -59,15 +200,14 @@ button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,
   </div>
   <div class="main">
     <h1 class="main-title" id="mainTitle">🎮 Roblox Scripts Hub 🛠️</h1>
-    <div class="code-box" id="codeBox" style="background: var(--code-bg-dark); color: var(--code-text-dark);">
-      loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()
-    </div>
+    <div class="code-box" id="codeBox">loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()</div>
   </div>
   <div id="topRight" style="display:none;">
     <img id="profilePic" src="" alt="">
     <span id="displayName"></span>
   </div>
 </div>
+
 <div id="signUpModal">
   <div class="modal-content">
     <h2 style="color:var(--accent-dark);margin:0;">Sign Up</h2>
@@ -78,56 +218,98 @@ button:hover {transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,
     <button onclick="document.getElementById('signUpModal').style.display='none'">Close</button>
   </div>
 </div>
+
 <input type="file" id="uploadImage" accept="image/*" style="display:none;">
-<div class="fixed-email"><a href="mailto:robloxscripts045@gmail.com">robloxscripts045@gmail.com</a></div>
+<div class="fixed-email"><a href="mailto:mtndewscripts@gmail.com">mtndewscripts@gmail.com</a></div>
+
 <script>
 const codeBox=document.getElementById("codeBox");
 const sidebarTitle=document.getElementById("sidebarTitle");
 const mainTitle=document.getElementById("mainTitle");
 const modeBtn=document.getElementById("modeBtn");
+const searchInput=document.getElementById("searchInput");
+const scriptSelector=document.getElementById("scriptSelector");
+const favBtn=document.getElementById("favBtn");
+const autoCopyToggle=document.getElementById("autoCopyToggle");
+
 let darkMode=true;
+let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
+let lastUsed=localStorage.getItem("lastUsed")||"";
+let autoCopy=JSON.parse(localStorage.getItem("autoCopy"))||false;
+autoCopyToggle.checked=autoCopy;
+
+const scripts={
+eggFarm:'🥚 Egg Farm Sim|loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()',
+mm2:'🩸 MM2 Script|loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()',
+nights99:'🌲 99 Nights in Forest|loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()',
+buildCar:'🚗 Build a Car|loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()',
+oneBlock:'🟩 One Block|loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()',
+legendsOfSpeed:'🏎️ Legends Of Speed|loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()',
+sizeLegends:'🦸 Size Legends Simulator|loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()',
+unbox99:'📦 Unbox 99 Nights|loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()',
+robABank:'🏦 Rob a Bank|loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()',
+mergeGubby:'🪄 Merge a Gubby|loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()',
+fishBrainrot:'🐟 Fish Brainrot Script|loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()',
+micUp:'🎤 Mic Up Script|loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()',
+dontWakeBrainrots:'🧠 Don’t Wake the Brainrots|loadstring(game:HttpGet("https://pastefy.app/nJwc6aku/raw"))()',
+dontGetCrushed:'🪨 Don’t Get Crushed|loadstring(game:HttpGet("https://pastefy.app/EDfN8cy0/raw"))()',
+buildABoat:'⛵ Build a Boat|loadstring(game:HttpGet("https://pastefy.app/Qbo8kg0O/raw"))()',
+speedBrainrotEscape:'+1 Speed Brainrot Escape|loadstring(game:HttpGet("https://pastefy.app/EraokMjn/raw"))()'
+};
+
+function renderScripts(filter=""){
+scriptSelector.innerHTML="";
+if(favorites.length>0){
+const optGroup=document.createElement("optgroup");
+optGroup.label="⭐ Favorites";
+favorites.forEach(fav=>{
+if(scripts[fav] && scripts[fav].toLowerCase().includes(filter.toLowerCase())){
+const [label]=scripts[fav].split("|");
+const option=document.createElement("option");
+option.value=fav;
+option.textContent=label+" (★)";
+optGroup.appendChild(option);
+}
+});
+scriptSelector.appendChild(optGroup);
+}
+const optGroupAll=document.createElement("optgroup");
+optGroupAll.label="All Scripts";
+for(const key in scripts){
+if(scripts[key].toLowerCase().includes(filter.toLowerCase())){
+const [label]=scripts[key].split("|");
+const option=document.createElement("option");
+option.value=key;
+option.textContent=label;
+optGroupAll.appendChild(option);
+}
+}
+scriptSelector.appendChild(optGroupAll);
+if(lastUsed && scripts[lastUsed]){
+scriptSelector.value=lastUsed;
+updateScript();
+}
+}
+
 function updateScript(){
-  const e=document.getElementById("scriptSelector").value;
-  const scripts={
-    eggFarm:'loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()',
-    mm2:'loadstring(game:HttpGet("https://pastefy.app/AVO6WDTX/raw"))()',
-    nights99:'loadstring(game:HttpGet("https://pastefy.app/JhKSrJaV/raw"))()',
-    buildCar:'loadstring(game:HttpGet("https://pastefy.app/qvkDLlQ2/raw"))()',
-    oneBlock:'loadstring(game:HttpGet("https://pastefy.app/CQoTd5Qr/raw"))()',
-    legendsOfSpeed:'loadstring(game:HttpGet("https://pastefy.app/MDd3Rz3d/raw"))()',
-    sizeLegends:'loadstring(game:HttpGet("https://pastefy.app/a2iOIxTT/raw"))()',
-    unbox99:'loadstring(game:HttpGet("https://pastefy.app/gxCgI09f/raw"))()',
-    robABank:'loadstring(game:HttpGet("https://pastefy.app/DypJ8dFa/raw"))()',
-    mergeGubby:'loadstring(game:HttpGet("https://pastefy.app/H2bGsO1B/raw"))()',
-    fishBrainrot:'loadstring(game:HttpGet("https://pastefy.app/IS30Ptja/raw"))()',
-    micUp:'loadstring(game:HttpGet("https://pastefy.app/OwmVMKpf/raw"))()',
-    dontWakeBrainrots:'loadstring(game:HttpGet("https://pastefy.app/nJwc6aku/raw"))()',
-    dontGetCrushed:'loadstring(game:HttpGet("https://pastefy.app/EDfN8cy0/raw"))()',
-    buildABoat:'loadstring(game:HttpGet("https://pastefy.app/Qbo8kg0O/raw"))()'
-  };
-  codeBox.textContent=scripts[e];
+const val=scriptSelector.value;
+const parts=scripts[val].split("|");
+codeBox.textContent=parts[1];
+lastUsed=val;
+localStorage.setItem("lastUsed",val);
+updateFavButton();
+if(autoCopyToggle.checked){
+navigator.clipboard.writeText(parts[1]);
 }
-function copyCode(){navigator.clipboard.writeText(codeBox.textContent);}
-function toggleMode(){
-  darkMode=!darkMode;
-  if(darkMode){
-    document.body.style.background="var(--bg-dark)";
-    document.body.style.color="var(--text-dark)";
-    sidebarTitle.style.color="var(--accent-dark)";
-    mainTitle.style.color="var(--accent-dark)";
-    codeBox.style.background="var(--code-bg-dark)";
-    codeBox.style.color="var(--code-text-dark)";
-    modeBtn.textContent="🌙";
-  }else{
-    document.body.style.background="var(--bg-light)";
-    document.body.style.color="var(--text-light)";
-    sidebarTitle.style.color="var(--accent-dark)";
-    mainTitle.style.color="var(--accent-light)";
-    codeBox.style.background="var(--code-bg-light)";
-    codeBox.style.color="var(--code-text-light)";
-    modeBtn.textContent="☀️";
-  }
 }
+
+function copyCode(){navigator.clipboard.writeText(codeBox.textContent);alert("Copied ✅");}
+function updateFavButton(){const current=scriptSelector.value;favBtn.textContent=favorites.includes(current)?"💛":"⭐";}
+favBtn.addEventListener("click",()=>{const current=scriptSelector.value;if(!favorites.includes(current)) favorites.push(current); else favorites=favorites.filter(f=>f!==current); localStorage.setItem("favorites",JSON.stringify(favorites)); renderScripts(searchInput.value); updateFavButton();});
+searchInput.addEventListener("input",()=>renderScripts(searchInput.value));
+autoCopyToggle.addEventListener("change",()=>{localStorage.setItem("autoCopy",autoCopyToggle.checked);});
+function toggleMode(){darkMode=!darkMode;if(darkMode){document.body.style.background="var(--bg-dark)";document.body.style.color="var(--text-dark)";sidebarTitle.style.color="var(--accent-dark)";mainTitle.style.color="var(--accent-dark)";codeBox.style.background="var(--code-bg-dark)";codeBox.style.color="var(--code-text-dark)";modeBtn.textContent="🌙";}else{document.body.style.background="var(--bg-light)";document.body.style.color="var(--text-light)";sidebarTitle.style.color="var(--accent-dark)";mainTitle.style.color="var(--accent-light)";codeBox.style.background="var(--code-bg-light)";codeBox.style.color="var(--code-text-light)";modeBtn.textContent="☀️";}}
+
 const signUpBtn=document.getElementById("signUpBtn");
 const signUpModal=document.getElementById("signUpModal");
 const submitSignUp=document.getElementById("submitSignUp");
@@ -136,45 +318,47 @@ const displayName=document.getElementById("displayName");
 const profilePic=document.getElementById("profilePic");
 const uploadImage=document.getElementById("uploadImage");
 let currentUser={};
+
 signUpBtn.addEventListener("click",()=>{signUpModal.style.display="flex";});
 submitSignUp.addEventListener("click",()=>{
-  const email=document.getElementById("signUpEmail").value;
-  const password=document.getElementById("signUpPassword").value;
-  const username=document.getElementById("signUpUsername").value;
-  if(!email||!password||!username) return alert("Fill all fields!");
-  currentUser={email,password,username,img:""};
-  localStorage.setItem("userData",JSON.stringify(currentUser));
-  displayName.textContent=username;
-  profilePic.src="";
-  topRight.style.display="flex";
-  signUpModal.style.display="none";
-  document.getElementById("signUpEmail").value="";
-  document.getElementById("signUpPassword").value="";
-  document.getElementById("signUpUsername").value="";
+const email=document.getElementById("signUpEmail").value;
+const password=document.getElementById("signUpPassword").value;
+const username=document.getElementById("signUpUsername").value;
+if(!email||!password||!username) return alert("Fill all fields!");
+currentUser={email,password,username,img:""};
+localStorage.setItem("userData",JSON.stringify(currentUser));
+displayName.textContent=username;
+profilePic.src="";
+topRight.style.display="flex";
+signUpModal.style.display="none";
+document.getElementById("signUpEmail").value="";
+document.getElementById("signUpPassword").value="";
+document.getElementById("signUpUsername").value="";
 });
 profilePic.addEventListener("click",()=>{uploadImage.click();});
 displayName.addEventListener("click",()=>{uploadImage.click();});
 uploadImage.addEventListener("change",(e)=>{
-  const file=e.target.files[0];
-  if(!file) return;
-  const reader=new FileReader();
-  reader.onload=function(event){
-    profilePic.src=event.target.result;
-    currentUser.img=event.target.result;
-    localStorage.setItem("userData",JSON.stringify(currentUser));
-  }
-  reader.readAsDataURL(file);
+const file=e.target.files[0];
+if(!file) return;
+const reader=new FileReader();
+reader.onload=function(event){
+profilePic.src=event.target.result;
+currentUser.img=event.target.result;
+localStorage.setItem("userData",JSON.stringify(currentUser));
+}
+reader.readAsDataURL(file);
 });
+
 window.addEventListener("load",()=>{
-  const savedUser=localStorage.getItem("userData");
-  if(savedUser){
-    currentUser=JSON.parse(savedUser);
-    displayName.textContent=currentUser.username;
-    profilePic.src=currentUser.img||"";
-    topRight.style.display="flex";
-  }
+const savedUser=localStorage.getItem("userData");
+if(savedUser){
+currentUser=JSON.parse(savedUser);
+displayName.textContent=currentUser.username;
+profilePic.src=currentUser.img||"";
+topRight.style.display="flex";
+}
+renderScripts();
 });
-window.onload=()=>{updateScript();}
 </script>
 </body>
 </html>
