@@ -177,6 +177,30 @@ button:hover {
   object-fit:cover;
   border:2px solid var(--accent-dark);
 }
+#storeModal, #deviceModal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+}
+.modal-inner {
+  background:var(--bg-dark);
+  padding:30px;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  width:300px;
+  text-align:center;
+}
+.modal-inner button {
+  background:var(--btn-gradient);
+}
 </style>
 </head>
 <body>
@@ -196,6 +220,7 @@ button:hover {
     <button onclick="copyCode()">📋 Copy Script</button>
     <button onclick="toggleMode()" id="modeBtn">🌙</button>
     <button id="signUpBtn">📝 Sign Up</button>
+    <button id="openStoreBtn">🛒 Open Store</button>
     <p class="discord-link">Owner's Discord: <a href="https://discord.gg/xvUeX64BWa" target="_blank">Join Here</a></p>
   </div>
   <div class="main">
@@ -219,6 +244,22 @@ button:hover {
   </div>
 </div>
 
+<div id="storeModal">
+  <div class="modal-inner">
+    <h2 style="color:var(--accent-dark);margin:0;">Mtndew Antivirus</h2>
+    <button id="storeDownloadBtn">Download</button>
+    <button onclick="document.getElementById('storeModal').style.display='none'">Close</button>
+  </div>
+</div>
+
+<div id="deviceModal">
+  <div class="modal-inner">
+    <h2 style="color:var(--accent-dark);margin:0;">Pick Your Device</h2>
+    <button id="windowsBtn">Windows Any CPU</button>
+    <button onclick="document.getElementById('deviceModal').style.display='none'">Close</button>
+  </div>
+</div>
+
 <input type="file" id="uploadImage" accept="image/*" style="display:none;">
 <div class="fixed-email"><a href="mailto:mtndewscripts@gmail.com">mtndewscripts@gmail.com</a></div>
 
@@ -231,7 +272,6 @@ const searchInput=document.getElementById("searchInput");
 const scriptSelector=document.getElementById("scriptSelector");
 const favBtn=document.getElementById("favBtn");
 const autoCopyToggle=document.getElementById("autoCopyToggle");
-
 let darkMode=true;
 let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
 let lastUsed=localStorage.getItem("lastUsed")||"";
@@ -317,6 +357,11 @@ const topRight=document.getElementById("topRight");
 const displayName=document.getElementById("displayName");
 const profilePic=document.getElementById("profilePic");
 const uploadImage=document.getElementById("uploadImage");
+const openStoreBtn=document.getElementById("openStoreBtn");
+const storeModal=document.getElementById("storeModal");
+const deviceModal=document.getElementById("deviceModal");
+const storeDownloadBtn=document.getElementById("storeDownloadBtn");
+const windowsBtn=document.getElementById("windowsBtn");
 let currentUser={};
 
 signUpBtn.addEventListener("click",()=>{signUpModal.style.display="flex";});
@@ -348,6 +393,13 @@ localStorage.setItem("userData",JSON.stringify(currentUser));
 }
 reader.readAsDataURL(file);
 });
+
+openStoreBtn.addEventListener("click",()=>{storeModal.style.display="flex";});
+storeDownloadBtn.addEventListener("click",()=>{
+storeModal.style.display="none";
+deviceModal.style.display="flex";
+});
+windowsBtn.addEventListener("click",()=>{window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Antivirus.rar","_blank");});
 
 window.addEventListener("load",()=>{
 const savedUser=localStorage.getItem("userData");
