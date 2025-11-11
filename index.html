@@ -1,206 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>MTNDEW Script Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --bg-dark:#05050a;
-  --bg-light:#f9f9f9;
-  --sidebar-gradient:linear-gradient(145deg,#1b1b2e,#23233e);
-  --text-dark:#e9f7f6;
-  --text-light:#000;
-  --accent-dark:#ffdd6b;
-  --accent-light:#ff0080;
-  --code-bg-dark:#111122;
-  --code-bg-light:#eaeaea;
-  --code-text-dark:#a6ffd6;
-  --code-text-light:#000;
-  --btn-gradient:linear-gradient(90deg,#ff6ec7,#00f0ff);
-}
-body {
-  font-family:'Poppins',sans-serif;
-  margin:0;
-  display:flex;
-  height:100vh;
-  background:var(--bg-dark);
-  color:var(--text-dark);
-  transition:all 0.3s ease;
-}
-.app {
-  display:grid;
-  grid-template-columns:300px 1fr;
-  width:100%;
-  gap:20px;
-  padding:20px;
-  position:relative;
-}
-.sidebar {
-  background:var(--sidebar-gradient);
-  border-radius:20px;
-  padding:30px 20px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  transition:all 0.3s ease;
-}
-.brand h2 {
-  margin:0;
-  color:var(--accent-dark);
-  font-weight:700;
-  font-size:22px;
-  text-shadow:0 0 10px rgba(255,221,107,0.5);
-  text-align:center;
-}
-.select input {
-  width:100%;
-  padding:10px;
-  margin-bottom:10px;
-  border-radius:10px;
-  border:none;
-  font-weight:600;
-}
-.select select {
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:none;
-  color:#000;
-  font-weight:600;
-  cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,0.3);
-  transition:transform 0.2s ease, box-shadow 0.2s ease;
-}
-.select select:hover {
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.4);
-}
-.select select option {
-  color:#000;
-  background:#fff;
-}
-button {
-  padding:12px;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-  transition:all 0.3s ease;
-  background:var(--btn-gradient);
-  color:#fff;
-  box-shadow:0 5px 15px rgba(255,221,107,0.4);
-}
-button:hover {
-  transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(255,221,107,0.6);
-}
-.main-title {
-  font-size:28px;
-  background:linear-gradient(90deg,#ff0080,#00f0ff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 8px rgba(255,221,107,0.7);
-}
-.code-box {
-  padding:15px;
-  border-radius:12px;
-  font-family:'JetBrains Mono',monospace;
-  overflow-y:auto;
-  white-space:pre-wrap;
-  transition:all 0.3s ease;
-  background:var(--code-bg-dark);
-  color:var(--code-text-dark);
-}
-.fixed-email {
-  position:fixed;
-  bottom:15px;
-  right:15px;
-  font-weight:bold;
-  color:var(--accent-dark);
-}
-.fixed-email a {
-  color:inherit;
-  text-decoration:none;
-}
-.discord-link {
-  margin-top:10px;
-  font-size:13px;
-  text-align:center;
-  color:#ff0080;
-}
-.discord-link a {
-  color:#ff0080;
-  text-decoration:underline;
-}
-#signUpModal {
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  justify-content:center;
-  align-items:center;
-}
-#signUpModal .modal-content {
-  background:var(--bg-dark);
-  padding:30px;
-  border-radius:20px;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  width:300px;
-  text-align:center;
-}
-#signUpModal input {
-  padding:10px;
-  border-radius:10px;
-  border:none;
-}
-#topRight {
-  position:absolute;
-  top:20px;
-  right:20px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  cursor:pointer;
-}
-#topRight img {
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid var(--accent-dark);
-}
-#storeModal, #deviceModal {
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  justify-content:center;
-  align-items:center;
-}
-.modal-inner {
-  background:var(--bg-dark);
-  padding:30px;
-  border-radius:20px;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  width:300px;
-  text-align:center;
-}
-.modal-inner button {
-  background:var(--btn-gradient);
-}
+:root{--bg-dark:#05050a;--bg-light:#f9f9f9;--sidebar-gradient:linear-gradient(145deg,#1b1b2e,#23233e);--text-dark:#e9f7f6;--text-light:#000;--accent-dark:#ffdd6b;--accent-light:#ff0080;--code-bg-dark:#111122;--code-bg-light:#eaeaea;--code-text-dark:#a6ffd6;--code-text-light:#000;--btn-gradient:linear-gradient(90deg,#ff6ec7,#00f0ff)}
+body{font-family:'Poppins',sans-serif;margin:0;display:flex;height:100vh;background:var(--bg-dark);color:var(--text-dark);transition:all .3s ease}
+.app{display:grid;grid-template-columns:300px 1fr;width:100%;gap:20px;padding:20px;position:relative}
+.sidebar{background:var(--sidebar-gradient);border-radius:20px;padding:30px 20px;box-shadow:0 15px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:20px;transition:all .3s ease}
+.brand h2{margin:0;color:var(--accent-dark);font-weight:700;font-size:22px;text-shadow:0 0 10px rgba(255,221,107,.5);text-align:center}
+.select input{width:100%;padding:10px;margin-bottom:10px;border-radius:10px;border:none;font-weight:600}
+.select select{width:100%;padding:12px;border-radius:12px;border:none;color:#000;font-weight:600;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.3);transition:transform .2s ease,box-shadow .2s ease}
+.select select:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.select select option{color:#000;background:#fff}
+button{padding:12px;border-radius:12px;border:none;cursor:pointer;font-weight:bold;transition:all .3s ease;background:var(--btn-gradient);color:#fff;box-shadow:0 5px 15px rgba(255,221,107,.4)}
+button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,.6)}
+.main-title{font-size:28px;background:linear-gradient(90deg,#ff0080,#00f0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 8px rgba(255,221,107,.7)}
+.code-box{padding:15px;border-radius:12px;font-family:'JetBrains Mono',monospace;overflow-y:auto;white-space:pre-wrap;transition:all .3s ease;background:var(--code-bg-dark);color:var(--code-text-dark)}
+.fixed-email{position:fixed;bottom:15px;right:15px;font-weight:bold;color:var(--accent-dark)}
+.fixed-email a{color:inherit;text-decoration:none}
+.discord-link{margin-top:10px;font-size:13px;text-align:center;color:#ff0080}
+.discord-link a{color:#ff0080;text-decoration:underline}
+#signUpModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);justify-content:center;align-items:center}
+#signUpModal .modal-content{background:var(--bg-dark);padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:15px;width:300px;text-align:center}
+#signUpModal input{padding:10px;border-radius:10px;border:none}
+#topRight{position:absolute;top:20px;right:20px;display:flex;align-items:center;gap:10px;cursor:pointer}
+#topRight img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-dark)}
+#storeModal,#deviceModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);justify-content:center;align-items:center}
+.modal-inner{background:var(--bg-dark);padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:15px;width:320px;text-align:center}
+.modal-inner button{background:var(--btn-gradient)}
 </style>
 </head>
 <body>
@@ -208,11 +38,11 @@ button:hover {
   <div class="sidebar">
     <div class="brand"><h2 id="sidebarTitle">🎮 MTNDEW Scripts</h2></div>
     <div class="select">
-      <input type="text" id="searchInput" placeholder="🔍 Search scripts...">
+      <input type="text" id="searchInput" placeholder="🔍 Search scripts..." />
       <select id="scriptSelector" onchange="updateScript()"></select>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
         <label style="display:flex;align-items:center;gap:8px;font-size:14px;">
-          <input type="checkbox" id="autoCopyToggle"> Auto Copy
+          <input type="checkbox" id="autoCopyToggle" /> Auto Copy
         </label>
         <button id="favBtn" style="font-size:18px;background:none;color:#ff0080;box-shadow:none;">⭐</button>
       </div>
@@ -228,7 +58,7 @@ button:hover {
     <div class="code-box" id="codeBox">loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()</div>
   </div>
   <div id="topRight" style="display:none;">
-    <img id="profilePic" src="" alt="">
+    <img id="profilePic" src="" alt="" />
     <span id="displayName"></span>
   </div>
 </div>
@@ -236,19 +66,35 @@ button:hover {
 <div id="signUpModal">
   <div class="modal-content">
     <h2 style="color:var(--accent-dark);margin:0;">Sign Up</h2>
-    <input type="email" id="signUpEmail" placeholder="Email"/>
-    <input type="password" id="signUpPassword" placeholder="Password"/>
-    <input type="text" id="signUpUsername" placeholder="Username"/>
+    <input type="email" id="signUpEmail" placeholder="Email" />
+    <input type="password" id="signUpPassword" placeholder="Password" />
+    <input type="text" id="signUpUsername" placeholder="Username" />
     <button id="submitSignUp">Submit</button>
     <button onclick="document.getElementById('signUpModal').style.display='none'">Close</button>
   </div>
 </div>
 
 <div id="storeModal">
-  <div class="modal-inner">
-    <h2 style="color:var(--accent-dark);margin:0;">Mtndew Antivirus</h2>
-    <button id="storeDownloadBtn">Download</button>
-    <button onclick="document.getElementById('storeModal').style.display='none'">Close</button>
+  <div class="modal-inner" id="storeInner">
+    <h2 style="color:var(--accent-dark);margin:0;">Store</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;width:100%;align-items:center;">
+      <div style="width:100%;background:#0d0d14;padding:12px;border-radius:12px;text-align:left;">
+        <h3 style="margin:0 0 6px 0;color:var(--accent-dark);font-size:16px;">Mtndew Antivirus</h3>
+        <div style="display:flex;gap:8px;">
+          <button id="antivirusDownloadBtn" style="flex:1">Download</button>
+          <button onclick="document.getElementById('storeModal').style.display='none'">Close</button>
+        </div>
+      </div>
+
+      <div style="width:100%;background:#0d0d14;padding:12px;border-radius:12px;text-align:left;">
+        <h3 style="margin:0 0 6px 0;color:var(--accent-dark);font-size:16px;">Mtndew Executer 1.0.4</h3>
+        <div style="display:flex;gap:8px;">
+          <button id="executerDownloadBtn" style="flex:1">Download</button>
+          <button onclick="document.getElementById('storeModal').style.display='none'">Close</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -260,23 +106,22 @@ button:hover {
   </div>
 </div>
 
-<input type="file" id="uploadImage" accept="image/*" style="display:none;">
+<input type="file" id="uploadImage" accept="image/*" style="display:none;" />
 <div class="fixed-email"><a href="mailto:mtndewscripts@gmail.com">mtndewscripts@gmail.com</a></div>
 
 <script>
-const codeBox=document.getElementById("codeBox");
-const sidebarTitle=document.getElementById("sidebarTitle");
-const mainTitle=document.getElementById("mainTitle");
-const modeBtn=document.getElementById("modeBtn");
-const searchInput=document.getElementById("searchInput");
-const scriptSelector=document.getElementById("scriptSelector");
-const favBtn=document.getElementById("favBtn");
-const autoCopyToggle=document.getElementById("autoCopyToggle");
-let darkMode=true;
-let favorites=JSON.parse(localStorage.getItem("favorites"))||[];
-let lastUsed=localStorage.getItem("lastUsed")||"";
-let autoCopy=JSON.parse(localStorage.getItem("autoCopy"))||false;
-autoCopyToggle.checked=autoCopy;
+const codeBox=document.getElementById("codeBox")
+const sidebarTitle=document.getElementById("sidebarTitle")
+const mainTitle=document.getElementById("mainTitle")
+const modeBtn=document.getElementById("modeBtn")
+const searchInput=document.getElementById("searchInput")
+const scriptSelector=document.getElementById("scriptSelector")
+const favBtn=document.getElementById("favBtn")
+const autoCopyToggle=document.getElementById("autoCopyToggle")
+let darkMode=true
+let favorites=JSON.parse(localStorage.getItem("favorites"))||[]
+let lastUsed=localStorage.getItem("lastUsed")||""
+autoCopyToggle.checked=JSON.parse(localStorage.getItem("autoCopy"))||false
 
 const scripts={
 eggFarm:'🥚 Egg Farm Sim|loadstring(game:HttpGet("https://pastefy.app/uwfYrJW1/raw"))()',
@@ -295,123 +140,127 @@ dontWakeBrainrots:'🧠 Don’t Wake the Brainrots|loadstring(game:HttpGet("http
 dontGetCrushed:'🪨 Don’t Get Crushed|loadstring(game:HttpGet("https://pastefy.app/EDfN8cy0/raw"))()',
 buildABoat:'⛵ Build a Boat|loadstring(game:HttpGet("https://pastefy.app/Qbo8kg0O/raw"))()',
 speedBrainrotEscape:'+1 Speed Brainrot Escape|loadstring(game:HttpGet("https://pastefy.app/EraokMjn/raw"))()'
-};
+}
 
 function renderScripts(filter=""){
-scriptSelector.innerHTML="";
-if(favorites.length>0){
-const optGroup=document.createElement("optgroup");
-optGroup.label="⭐ Favorites";
-favorites.forEach(fav=>{
-if(scripts[fav] && scripts[fav].toLowerCase().includes(filter.toLowerCase())){
-const [label]=scripts[fav].split("|");
-const option=document.createElement("option");
-option.value=fav;
-option.textContent=label+" (★)";
-optGroup.appendChild(option);
-}
-});
-scriptSelector.appendChild(optGroup);
-}
-const optGroupAll=document.createElement("optgroup");
-optGroupAll.label="All Scripts";
-for(const key in scripts){
-if(scripts[key].toLowerCase().includes(filter.toLowerCase())){
-const [label]=scripts[key].split("|");
-const option=document.createElement("option");
-option.value=key;
-option.textContent=label;
-optGroupAll.appendChild(option);
-}
-}
-scriptSelector.appendChild(optGroupAll);
-if(lastUsed && scripts[lastUsed]){
-scriptSelector.value=lastUsed;
-updateScript();
-}
+  scriptSelector.innerHTML=""
+  if(favorites.length>0){
+    const optGroup=document.createElement("optgroup")
+    optGroup.label="⭐ Favorites"
+    favorites.forEach(fav=>{
+      if(scripts[fav] && scripts[fav].toLowerCase().includes(filter.toLowerCase())){
+        const [label]=scripts[fav].split("|")
+        const option=document.createElement("option")
+        option.value=fav
+        option.textContent=label+" (★)"
+        optGroup.appendChild(option)
+      }
+    })
+    scriptSelector.appendChild(optGroup)
+  }
+  const optGroupAll=document.createElement("optgroup")
+  optGroupAll.label="All Scripts"
+  for(const key in scripts){
+    if(scripts[key].toLowerCase().includes(filter.toLowerCase())){
+      const [label]=scripts[key].split("|")
+      const option=document.createElement("option")
+      option.value=key
+      option.textContent=label
+      optGroupAll.appendChild(option)
+    }
+  }
+  scriptSelector.appendChild(optGroupAll)
+  if(lastUsed && scripts[lastUsed]){
+    scriptSelector.value=lastUsed
+    updateScript()
+  }
 }
 
 function updateScript(){
-const val=scriptSelector.value;
-const parts=scripts[val].split("|");
-codeBox.textContent=parts[1];
-lastUsed=val;
-localStorage.setItem("lastUsed",val);
-updateFavButton();
-if(autoCopyToggle.checked){
-navigator.clipboard.writeText(parts[1]);
-}
+  const val=scriptSelector.value
+  const parts=scripts[val].split("|")
+  codeBox.textContent=parts[1]
+  lastUsed=val
+  localStorage.setItem("lastUsed",val)
+  updateFavButton()
+  if(autoCopyToggle.checked){navigator.clipboard.writeText(parts[1])}
 }
 
-function copyCode(){navigator.clipboard.writeText(codeBox.textContent);alert("Copied ✅");}
-function updateFavButton(){const current=scriptSelector.value;favBtn.textContent=favorites.includes(current)?"💛":"⭐";}
-favBtn.addEventListener("click",()=>{const current=scriptSelector.value;if(!favorites.includes(current)) favorites.push(current); else favorites=favorites.filter(f=>f!==current); localStorage.setItem("favorites",JSON.stringify(favorites)); renderScripts(searchInput.value); updateFavButton();});
-searchInput.addEventListener("input",()=>renderScripts(searchInput.value));
-autoCopyToggle.addEventListener("change",()=>{localStorage.setItem("autoCopy",autoCopyToggle.checked);});
-function toggleMode(){darkMode=!darkMode;if(darkMode){document.body.style.background="var(--bg-dark)";document.body.style.color="var(--text-dark)";sidebarTitle.style.color="var(--accent-dark)";mainTitle.style.color="var(--accent-dark)";codeBox.style.background="var(--code-bg-dark)";codeBox.style.color="var(--code-text-dark)";modeBtn.textContent="🌙";}else{document.body.style.background="var(--bg-light)";document.body.style.color="var(--text-light)";sidebarTitle.style.color="var(--accent-dark)";mainTitle.style.color="var(--accent-light)";codeBox.style.background="var(--code-bg-light)";codeBox.style.color="var(--code-text-light)";modeBtn.textContent="☀️";}}
+function copyCode(){navigator.clipboard.writeText(codeBox.textContent);alert("Copied ✅")}
+function updateFavButton(){const current=scriptSelector.value;favBtn.textContent=favorites.includes(current)?"💛":"⭐"}
+favBtn.addEventListener("click",()=>{const current=scriptSelector.value;if(!favorites.includes(current))favorites.push(current);else favorites=favorites.filter(f=>f!==current);localStorage.setItem("favorites",JSON.stringify(favorites));renderScripts(searchInput.value);updateFavButton()})
+searchInput.addEventListener("input",()=>renderScripts(searchInput.value))
+autoCopyToggle.addEventListener("change",()=>{localStorage.setItem("autoCopy",autoCopyToggle.checked)})
+function toggleMode(){darkMode=!darkMode;if(darkMode){document.body.style.background="var(--bg-dark)";document.body.style.color="var(--text-dark)";sidebarTitle.style.color="var(--accent-dark)";mainTitle.style.color="var(--accent-dark)";codeBox.style.background="var(--code-bg-dark)";codeBox.style.color="var(--code-text-dark)";modeBtn.textContent="🌙"}else{document.body.style.background="var(--bg-light)";document.body.style.color="var(--text-light)";sidebarTitle.style.color="var(--accent-dark)";mainTitle.style.color="var(--accent-light)";codeBox.style.background="var(--code-bg-light)";codeBox.style.color="var(--code-text-light)";modeBtn.textContent="☀️"}}
 
-const signUpBtn=document.getElementById("signUpBtn");
-const signUpModal=document.getElementById("signUpModal");
-const submitSignUp=document.getElementById("submitSignUp");
-const topRight=document.getElementById("topRight");
-const displayName=document.getElementById("displayName");
-const profilePic=document.getElementById("profilePic");
-const uploadImage=document.getElementById("uploadImage");
-const openStoreBtn=document.getElementById("openStoreBtn");
-const storeModal=document.getElementById("storeModal");
-const deviceModal=document.getElementById("deviceModal");
-const storeDownloadBtn=document.getElementById("storeDownloadBtn");
-const windowsBtn=document.getElementById("windowsBtn");
-let currentUser={};
+const signUpBtn=document.getElementById("signUpBtn")
+const signUpModal=document.getElementById("signUpModal")
+const submitSignUp=document.getElementById("submitSignUp")
+const topRight=document.getElementById("topRight")
+const displayName=document.getElementById("displayName")
+const profilePic=document.getElementById("profilePic")
+const uploadImage=document.getElementById("uploadImage")
+const openStoreBtn=document.getElementById("openStoreBtn")
+const storeModal=document.getElementById("storeModal")
+const deviceModal=document.getElementById("deviceModal")
+const antivirusDownloadBtn=document.getElementById("antivirusDownloadBtn")
+const executerDownloadBtn=document.getElementById("executerDownloadBtn")
+const windowsBtn=document.getElementById("windowsBtn")
+let currentUser={}
 
-signUpBtn.addEventListener("click",()=>{signUpModal.style.display="flex";});
+signUpBtn.addEventListener("click",()=>{signUpModal.style.display="flex"})
 submitSignUp.addEventListener("click",()=>{
-const email=document.getElementById("signUpEmail").value;
-const password=document.getElementById("signUpPassword").value;
-const username=document.getElementById("signUpUsername").value;
-if(!email||!password||!username) return alert("Fill all fields!");
-currentUser={email,password,username,img:""};
-localStorage.setItem("userData",JSON.stringify(currentUser));
-displayName.textContent=username;
-profilePic.src="";
-topRight.style.display="flex";
-signUpModal.style.display="none";
-document.getElementById("signUpEmail").value="";
-document.getElementById("signUpPassword").value="";
-document.getElementById("signUpUsername").value="";
-});
-profilePic.addEventListener("click",()=>{uploadImage.click();});
-displayName.addEventListener("click",()=>{uploadImage.click();});
+  const email=document.getElementById("signUpEmail").value
+  const password=document.getElementById("signUpPassword").value
+  const username=document.getElementById("signUpUsername").value
+  if(!email||!password||!username) return alert("Fill all fields!")
+  currentUser={email,password,username,img:""}
+  localStorage.setItem("userData",JSON.stringify(currentUser))
+  displayName.textContent=username
+  profilePic.src=""
+  topRight.style.display="flex"
+  signUpModal.style.display="none"
+  document.getElementById("signUpEmail").value=""
+  document.getElementById("signUpPassword").value=""
+  document.getElementById("signUpUsername").value=""
+})
+profilePic.addEventListener("click",()=>{uploadImage.click()})
+displayName.addEventListener("click",()=>{uploadImage.click()})
 uploadImage.addEventListener("change",(e)=>{
-const file=e.target.files[0];
-if(!file) return;
-const reader=new FileReader();
-reader.onload=function(event){
-profilePic.src=event.target.result;
-currentUser.img=event.target.result;
-localStorage.setItem("userData",JSON.stringify(currentUser));
-}
-reader.readAsDataURL(file);
-});
+  const file=e.target.files[0]
+  if(!file) return
+  const reader=new FileReader()
+  reader.onload=function(event){
+    profilePic.src=event.target.result
+    currentUser.img=event.target.result
+    localStorage.setItem("userData",JSON.stringify(currentUser))
+  }
+  reader.readAsDataURL(file)
+})
 
-openStoreBtn.addEventListener("click",()=>{storeModal.style.display="flex";});
-storeDownloadBtn.addEventListener("click",()=>{
-storeModal.style.display="none";
-deviceModal.style.display="flex";
-});
-windowsBtn.addEventListener("click",()=>{window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Antivirus.zip","_blank");});
+openStoreBtn.addEventListener("click",()=>{storeModal.style.display="flex"})
+antivirusDownloadBtn.addEventListener("click",()=>{
+  storeModal.style.display="none"
+  deviceModal.style.display="flex"
+})
+executerDownloadBtn.addEventListener("click",()=>{
+  storeModal.style.display="none"
+  window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Executer%201.0.4.zip","_blank")
+})
+windowsBtn.addEventListener("click",()=>{
+  window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Antivirus.zip","_blank")
+})
 
 window.addEventListener("load",()=>{
-const savedUser=localStorage.getItem("userData");
-if(savedUser){
-currentUser=JSON.parse(savedUser);
-displayName.textContent=currentUser.username;
-profilePic.src=currentUser.img||"";
-topRight.style.display="flex";
-}
-renderScripts();
-});
+  const savedUser=localStorage.getItem("userData")
+  if(savedUser){
+    currentUser=JSON.parse(savedUser)
+    displayName.textContent=currentUser.username
+    profilePic.src=currentUser.img||""
+    topRight.style.display="flex"
+  }
+  renderScripts()
+})
 </script>
 </body>
 </html>
-
