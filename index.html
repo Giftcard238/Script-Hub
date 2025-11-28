@@ -12,7 +12,7 @@ body{font-family:'Poppins',sans-serif;margin:0;display:flex;height:100vh;backgro
 .sidebar{background:var(--sidebar-gradient);border-radius:20px;padding:30px 20px;box-shadow:0 15px 40px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:20px;transition:all .3s ease}
 .brand h2{margin:0;color:var(--accent-dark);font-weight:700;font-size:22px;text-shadow:0 0 10px rgba(255,221,107,.5);text-align:center}
 .select input{width:100%;padding:10px;margin-bottom:10px;border-radius:10px;border:none;font-weight:600}
-.select select{width:100%;padding:12px;border-radius:12px;border:none;color:#000;font-weight:600;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.3);transition:transform .2s ease,box-shadow .2s ease}
+.select select{width:100%;padding:12px;border-radius:12px;border:none;color:#000;font-weight:600;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.3);transition:transform .2s ease,box-shadow .2s ease;position:relative;z-index:10}
 .select select:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.4)}
 .select select option{color:#000;background:#fff}
 button{padding:12px;border-radius:12px;border:none;cursor:pointer;font-weight:bold;transition:all .3s ease;background:var(--btn-gradient);color:#fff;box-shadow:0 5px 15px rgba(255,221,107,.4)}
@@ -36,7 +36,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,.
     <div class="brand"><h2 id="sidebarTitle">🎮 MTNDEW Scripts</h2></div>
     <div class="select">
       <input type="text" id="searchInput" placeholder="🔍 Search scripts..." />
-      <select id="scriptSelector" onchange="updateScript()"></select>
+      <select id="scriptSelector"></select>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;">
         <label style="display:flex;align-items:center;gap:8px;font-size:14px;">
           <input type="checkbox" id="autoCopyToggle" /> Auto Copy
@@ -82,7 +82,6 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,.
           <button onclick="document.getElementById('storeModal').style.display='none'">Close</button>
         </div>
       </div>
-
       <div style="width:100%;background:#0d0d14;padding:12px;border-radius:12px;text-align:left;">
         <h3 style="margin:0 0 6px 0;color:var(--accent-dark);font-size:16px;">Mtndew Executer 1.0.8</h3>
         <div style="display:flex;gap:8px;">
@@ -176,12 +175,13 @@ function renderScripts(filter=""){
 
 function updateScript(){
   const val=scriptSelector.value
+  if(!scripts[val]) return
   const parts=scripts[val].split("|")
   codeBox.textContent=parts[1]
   lastUsed=val
   localStorage.setItem("lastUsed",val)
   updateFavButton()
-  if(autoCopyToggle.checked){navigator.clipboard.writeText(parts[1])}
+  if(autoCopyToggle.checked) navigator.clipboard.writeText(parts[1])
 }
 
 function copyCode(){navigator.clipboard.writeText(codeBox.textContent);alert("Copied ✅")}
@@ -237,13 +237,12 @@ uploadImage.addEventListener("change",(e)=>{
 })
 
 openStoreBtn.addEventListener("click",()=>{storeModal.style.display="flex"})
-antivirusDownloadBtn.addEventListener("click",()=>{
-  storeModal.style.display="none"
-  deviceModal.style.display="flex"
-})
-executerDownloadBtn.addEventListener("click",()=>{
-  storeModal.style.display="none"
-  window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Executer%2010.8.zip","_blank")
-})
-windowsBtn.addEventListener("click",()=>{
-  window.open("https://github.com/Giftcard238/Script-Hub/raw
+antivirusDownloadBtn.addEventListener("click",()=>{storeModal.style.display="none";deviceModal.style.display="flex"})
+executerDownloadBtn.addEventListener("click",()=>{storeModal.style.display="none";window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Executer%2010.8.zip","_blank")})
+windowsBtn.addEventListener("click",()=>{window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Antivirus.zip","_blank");deviceModal.style.display="none"})
+
+window.addEventListener("DOMContentLoaded",()=>{renderScripts();const stored=localStorage.getItem("userData");if(stored){currentUser=JSON.parse(stored);displayName.textContent=currentUser.username||"";profilePic.src=currentUser.img||"";topRight.style.display="flex"}updateFavButton()})
+scriptSelector.addEventListener("change",updateScript)
+</script>
+</body>
+</html>
