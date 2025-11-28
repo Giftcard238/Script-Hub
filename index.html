@@ -23,14 +23,11 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,.
 .fixed-email a{color:inherit;text-decoration:none}
 .discord-link{margin-top:10px;font-size:13px;text-align:center;color:#ff0080}
 .discord-link a{color:#ff0080;text-decoration:underline}
-#signUpModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);justify-content:center;align-items:center}
-#signUpModal .modal-content{background:var(--bg-dark);padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:15px;width:300px;text-align:center}
-#signUpModal input{padding:10px;border-radius:10px;border:none}
+#signUpModal,#storeModal,#deviceModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);justify-content:center;align-items:center}
+#signUpModal .modal-content,#storeModal .modal-inner,#deviceModal .modal-inner{background:var(--bg-dark);padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:15px;width:300px;text-align:center}
+#signUpModal input,#storeModal input,#deviceModal input{padding:10px;border-radius:10px;border:none}
 #topRight{position:absolute;top:20px;right:20px;display:flex;align-items:center;gap:10px;cursor:pointer}
 #topRight img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-dark)}
-#storeModal,#deviceModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);justify-content:center;align-items:center}
-.modal-inner{background:var(--bg-dark);padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:15px;width:320px;text-align:center}
-.modal-inner button{background:var(--btn-gradient)}
 </style>
 </head>
 <body>
@@ -55,7 +52,7 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,.
   </div>
   <div class="main">
     <h1 class="main-title" id="mainTitle">🎮 Roblox Scripts Hub 🛠️</h1>
-    <div class="code-box" id="codeBox">loadstring(game:HttpGet("https://pastefy.app/mm1sugsC/raw"))()</div>
+    <div class="code-box" id="codeBox">loadstring(game:HttpGet("https://pastefy.app/PTJdCM1v/raw"))()</div>
   </div>
   <div id="topRight" style="display:none;">
     <img id="profilePic" src="" alt="" />
@@ -93,7 +90,6 @@ button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,221,107,.
           <button onclick="document.getElementById('storeModal').style.display='none'">Close</button>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -140,8 +136,8 @@ dontWakeBrainrots:'🧠 Don’t Wake the Brainrots|loadstring(game:HttpGet("http
 dontGetCrushed:'🪨 Don’t Get Crushed|loadstring(game:HttpGet("https://pastefy.app/EDfN8cy0/raw"))()',
 buildABoat:'⛵ Build a Boat|loadstring(game:HttpGet("https://pastefy.app/Qbo8kg0O/raw"))()',
 speedBrainrotEscape:'+1 Speed Brainrot Escape|loadstring(game:HttpGet("https://pastefy.app/EraokMjn/raw"))()',
-brainrotRoyale:'🧠 Brainrot Royale Script|loadstring(game:HttpGet("https://pastefy.app/mm1sugsC/raw"))()'
-surviveOnRaft:'⛵ Survive on a Raft|loadstring(game:HttpGet("https://pastefy.app/PTJdCM1v/raw"))()'
+brainrotRoyale:'🧠 Brainrot Royale Script|loadstring(game:HttpGet("https://pastefy.app/mm1sugsC/raw"))()',
+surviveRaft:'🚣 Survive On a Raft|loadstring(game:HttpGet("https://pastefy.app/PTJdCM1v/raw"))()'
 }
 
 function renderScripts(filter=""){
@@ -250,26 +246,4 @@ executerDownloadBtn.addEventListener("click",()=>{
   window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Executer%2010.8.zip","_blank")
 })
 windowsBtn.addEventListener("click",()=>{
-  window.open("https://github.com/Giftcard238/Script-Hub/raw/main/Mtndew%20Antivirus.zip","_blank")
-})
-
-window.addEventListener("load",()=>{
-  const savedUser=localStorage.getItem("userData")
-  if(savedUser){
-    currentUser=JSON.parse(savedUser)
-    displayName.textContent=currentUser.username
-    profilePic.src=currentUser.img||""
-    topRight.style.display="flex"
-  }
-  renderScripts()
-})
-</script>
-</body>
-</html>
-
-
-
-
-
-
-
+  window.open("https://github.com/Giftcard238/Script-Hub/raw
